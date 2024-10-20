@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Account Creation</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div class="container" id="account-creation-container">
-        <h1 class="title">Welcome, create your school account</h1>
-        <div class="form-box" id="form-box">
-            <p class="welcome-message">It is our great pleasure to have you on board!</p>
-            <form id="account-form">
-                <input type="text" id="admin-name" class="input-field" placeholder="Enter the name of admin" required>
-                <input type="text" id="school-name" class="input-field" placeholder="Enter the name of school" required>
-                <input type="password" id="password" class="input-field" placeholder="Enter your password" required>
-                <button type="submit" class="submit-button">Next</button>
-            </form>
-            <p class="existing-account">Already have an account? <a href="#">Sign up</a></p>
+    <div class="container">
+
+        <div class="type">
+            <div class="admin">
+                <p>login as Admin</p>
+                 
+                  <button id="ADMIN" >Admin</button>
+            </div>
+
+            <div class="Teacher">
+                <p>login as Teacher</p>
+                <button id="TEACHER">Teacher</button>
+            </div>
+
+            <div class="Student">
+                <p>login as Student</p>
+                <button id="STUDENT">Student</button>
+
+            </div>
+
         </div>
+
+        
+        <div class="form">
+            <h3>Welcome, Log into you account</h3>
+
+            <p>it is our great pleasure to have you on board!</p>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button type="submit">Login</button>
+
+       </div>
     </div>
 
-    <script src="../js/login.js">
-    
-    </script>
+
+
+    <script src="login.js"></script>
 </body>
 </html>
