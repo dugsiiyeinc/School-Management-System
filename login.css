@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fdfbfa;
+}
+.container{
+    width: min(95%, 800px);
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding: 20px;
+    margin:100px auto;
+    /* background: rgba(236, 235, 235, 0.802); */
+    align-items: center;
+}
+
+.type{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.admin, .Teacher, .Student{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.admin p, .Teacher p, .Student p{
+    color: #aaa;
+    font-weight: 600;
+}
+.admin #ADMIN, .Teacher #TEACHER, .Student #STUDENT{
+    padding: 20px 45px;
+    border:2px solid transparent;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    background: #e63946;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.4);
+}
+.Teacher #TEACHER{
+    background: #e9c46a
+}
+.Student #STUDENT{
+    background: #0077b6;
+
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.form h3{
+font-size: 2.2rem;
+color: #222;
+}
+.form p{
+    color: #aaa;
+    font-weight: 500;
+}
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: min(100%, 500px);
+}
+#loginForm input{
+    padding: 13px;
+    font-size:1.2rem ;
+    border: none;
+}
+#loginForm button{
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background: #2d89d5;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+
+@media (max-width:600px){
+    .type{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .form h3{
+        font-size: 1.2rem;
+    }
+    
+}
+
+@media (max-width:400px){
+    .container{
+        margin: 0;
+    }
+    
+}
