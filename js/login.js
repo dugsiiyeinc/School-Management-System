@@ -16,7 +16,7 @@ document.getElementById('account-form').addEventListener('submit', function(even
     }
 
     function saveToLocalStorage() {
-        let users = JSON.parse(localStorage.getItem('users')) || [];
+        let users = JSON.parse(localStorage.getItem('admins')) || [];
         
         const newUser = {
             adminName: adminName,
@@ -35,7 +35,7 @@ document.getElementById('account-form').addEventListener('submit', function(even
         users.push(newUser);
         
         // Save the updated users array back to local storage
-        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('admins', JSON.stringify(users));
         
         // Clear input fields
         document.getElementById('admin-name').value = '';
@@ -47,4 +47,5 @@ document.getElementById('account-form').addEventListener('submit', function(even
     }
 
     saveToLocalStorage();
+      window.location.href='login.html'
 });

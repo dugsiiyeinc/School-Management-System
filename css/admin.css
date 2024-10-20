@@ -90,6 +90,9 @@ color: #222;
     color: white;
     cursor: pointer;
 }
+#loginForm button:hover{
+    background: #0971c7;
+}
 
 
 @media (max-width:600px){

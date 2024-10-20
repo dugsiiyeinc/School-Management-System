@@ -46,13 +46,14 @@ TEACHER.addEventListener('click',()=>{
       let password=document.querySelector('#password')
      
        if(admin){
-       let adminData=JSON.parse(localStorage.getItem('admin'))
-       let curentAdmin=adminData.find(admin=> admin.Username == username.value && admin.Password== password.value)
+       let adminData=JSON.parse(localStorage.getItem('admins'))
+       let curentAdmin=adminData.find(admin=> admin.adminName == username.value && admin.password== password.value)
        if(curentAdmin){
         alert('Login Successful')
-        window.location.href='../admin.html'
+        window.location.href='admin.html'
        }else{
         alert(`admin ${username.value} is an exisist !`)
+        return
        }
        
        }
@@ -65,6 +66,7 @@ TEACHER.addEventListener('click',()=>{
          window.location.href='../teacher.html'
         }else{
             alert(`Teacher ${username.value} is an exisist !`)
+            return
         }
        
        }
@@ -76,6 +78,7 @@ TEACHER.addEventListener('click',()=>{
          window.location.href='../student.html'
         }else{
             alert(`Student ${username.value} is an exisist !`)
+            return
         }
        
        }
