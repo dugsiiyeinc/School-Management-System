@@ -1,7 +1,6 @@
 document.getElementById('account-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
+    event.preventDefault(); 
 
-    // Get values from input fields
     const adminName = document.getElementById('admin-name').value;
     const schoolName = document.getElementById('school-name').value;
     const password = document.getElementById('password').value;
@@ -24,26 +23,25 @@ document.getElementById('account-form').addEventListener('submit', function(even
             password: password,
         };
 
-        // Check if the user already exists
-        const existingUser = users.find(user => user.adminName === adminName && user.schoolName === schoolName);
+        const existingUser = users.find(user => user.adminName === adminName && user.schoolName === schoolName 
+            && user.password === password); 
+        
+
         if (existingUser) {
             alert('This account already exists.');
             return;
         }
-
-        // Add the new user to the array
         users.push(newUser);
         
-        // Save the updated users array back to local storage
         localStorage.setItem('users', JSON.stringify(users));
         
-        // Clear input fields
         document.getElementById('admin-name').value = '';
         document.getElementById('school-name').value = '';
         document.getElementById('password').value = '';
 
         alert('Account created successfully!');
-        
+
+        window.location.href = './admo';
     }
 
     saveToLocalStorage();
