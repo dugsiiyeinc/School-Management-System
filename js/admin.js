@@ -63,7 +63,7 @@ TEACHER.addEventListener('click',()=>{
         let curentAdmin=adminData.find(admin=> admin.Username == username.value && admin.Password== password.value)
         if(curentAdmin){
          alert('Login Successful')
-         window.location.href='../teacher.html'
+         window.location.href='teacher.html'
         }else{
             alert(`Teacher ${username.value} is an exisist !`)
             return
@@ -75,7 +75,7 @@ TEACHER.addEventListener('click',()=>{
         let curentAdmin=adminData.find(admin=> admin.Username == username.value && admin.Password== password.value)
         if(curentAdmin){
          alert('Login Successful')
-         window.location.href='../student.html'
+         window.location.href='student.html'
         }else{
             alert(`Student ${username.value} is an exisist !`)
             return

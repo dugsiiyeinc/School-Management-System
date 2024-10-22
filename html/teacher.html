@@ -3,9 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Teacher-dashbord</title>
+    <link rel="stylesheet" href="../css/teacher.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h1>Student</h1>
+    <div class="container">
+        <!-- mobile -->
+         <div class="humberger">
+            <i class="fa-solid fa-bars"></i>
+         </div>
+         <div class=" mobile ">
+            <div class="logo">
+                <img src="../img/Ellipse 6.png" alt="">
+                <p class="curent_teacher">
+                    Teacher: cali
+                </p>
+            </div>
+            <ul class="actions">
+                <li class="my-DataM"><i class="fa-solid fa-database"></i> My Data</li>
+                <li class="my-ClassM"><i class="fa-solid fa-landmark"></i> My cLass</li>
+                <li class="add-N-StudentM"><i class="fa-regular fa-square-plus"></i>Add new studhent</li>
+             </ul>
+             <div class="Teacher_Sittings Sittings_actionM">
+                <p><i class="fa-solid fa-gear"></i>  sittings</p>
+             </div>
+        </div>
+
+        <!-- left side of dashbord -->
+        <div class="left_side">
+            <div class="logo">
+                <img src="../img/Ellipse 6.png" alt="">
+                <p class="curent_teacher">
+                    Teacher: cali
+                </p>
+            </div>
+            <ul class="actions">
+                <li class="my-Data left_side_active"><i class="fa-solid fa-database"></i> My Data</li>
+                <li class="my-Class"><i class="fa-solid fa-landmark"></i> My cLass</li>
+                <li class="add-N-Student"><i class="fa-regular fa-square-plus"></i>Add new studhent</li>
+             </ul>
+             <div class="Sittings_action">
+                <p><i class="fa-solid fa-gear"></i>  sittings</p>
+             </div>
+        </div>
+       <!-- rihgt side of dashbord -->
+        <div class="right_side">
+            <header class="header">
+                <div class="top">
+                    <button class="add_student">Add Student</button>
+                        <div class="lagput_notivication">
+                            <i class="fa-regular fa-bell"></i>
+                            <div class="color"></div>
+                            <button>Lagout</button>
+                        </div>
+                </div>
+                <div class="bottom_header">
+                      <div class="searching">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" class="studentSearching" placeholder="Search student name">
+                      </div>
+                </div>
+            </header>
+            <!-- section are here -->
+
+            <section class="teacherData">
+                  <div class="maydata">
+                    <img src="https://imgs.search.brave.com/gvjaP-SuocK28zHutcrrrJNuVtkYygalGI_yUwCPnnI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTc0/MDAyNjc0L3Bob3Rv/L3Byb2ZpbGUtcG9y/dHJhaXQtZXllcy1j/bG9zZWQuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPU4zcXR2/QUctTWJtaG9qTWx5/SXprd0ZqdS0xc1U5/aHJtNURvVG9zVm95/cVE9" alt="teacher-img" class="teacher-img">
+                    
+                        <ul class="content">
+                            <li class="name">Full Name:  <small class="teacherName">Cli cabdi nuur</small></li>
+                            <li class="email">Email :  <small class="teacherEmail">Cli@gmail.com</small></li>
+                            <li class="name">Password: <small class="teacherPassword">123456</small></li>
+                            <li class="name">Class:  <small class="teacherClass">F41</small></li>
+                            <li class="name">Phone number:  <small class="teacherPhone">0929471030</small></li>
+                        </ul>
+                        <button class=" edit-T" >Edit your Data</button>
+                    
+                  </div>
+            </section>
+
+            <section class="my_class">
+              <div class="studentData">
+                <div class="top_table">
+                    <span class="table_name">Name</span>
+                    <span class="table_ID">Student ID</span>
+                    <span class="table_Email">Email adress</span>
+                    <span class="table_Class">Class</span>
+                    <span class="TABLE_Gender">Gender</span>
+                    
+                </div>
+                <div class="student_data_Parent">
+
+                    <div class="student_data">
+                        <span class="table_name"><img src="https://media.istockphoto.com/id/1815745180/photo/portrait-of-beautiful-multiracial-tourist-woman-during-sunset-on-top-of-hill.webp?a=1&b=1&s=612x612&w=0&k=20&c=SDt3m8BFs88Olzf_Ak_yA42qHmsPVp_oPg1s_Ad7GdY=" alt="" class="student_img"> <span class="name">cli cabdi</span></span>
+                        <span class="table_ID">708397</span>
+                        <span class="table_Email">cali@gmail.com</span>
+                        <span class="table_Class">jss 3</span>
+                        <span class="TABLE_Gender">mail</span>
+                        
+                    </div>
+                    <div class="student_data">
+                        <span class="table_name"><img src="https://media.istockphoto.com/id/1815745180/photo/portrait-of-beautiful-multiracial-tourist-woman-during-sunset-on-top-of-hill.webp?a=1&b=1&s=612x612&w=0&k=20&c=SDt3m8BFs88Olzf_Ak_yA42qHmsPVp_oPg1s_Ad7GdY=" alt="" class="student_img"> <span class="name">cli cabdi</span></span>
+                        <span class="table_ID">708397</span>
+                        <span class="table_Email">cali@gmail.com</span>
+                        <span class="table_Class">jss 3</span>
+                        <span class="TABLE_Gender">mail</span>
+                        
+                    </div>
+                </div>
+               
+              </div>
+            </section>
+
+            <section class="Add_new_student">
+                <h1 style="color: #444;">Add Students</h1>
+                <span class="manually_imprt"><span>Manually</span> <span>Import CSV</span></span>
+                <form class="Add_student_form">
+                    <div class="top">
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="name"> 
+                        </div>   
+                        <select class="select_class">
+                            <option value="fom1">fom1</option>
+                            <option value="fom1">fom2</option>
+                            <option value="fom1">fom3</option>
+                            <option value="fom1">fom4</option>
+                        </select>
+                        <select class="select_Gender">
+                            <option value="Mail">Male</option>
+                            <option value="Fmail">Female</option>
+                        </select>
+                    </div>
+                   
+                    <div class="middel">
+                        <div class="lebels">
+                            <label for="Email">Email address</label>
+                            <input type="text" name="Email" class="Email"> 
+                        </div> 
+                        <div class="lebels">
+                            <label for="phone">Name</label>
+                            <input type="text" name="phone" class="phone"> 
+                        </div> 
+                    </div>
+                    
+                    <div class="lebels">
+                        <label for="Password">Password</label>
+                        <input type="Password" name="Password" class="Password"> 
+                    </div> 
+                    <button class="add_student_btn">Add Student</button>
+                </form>
+            </section>
+
+            <section class="sittings">
+                sittings
+             </section>
+
+        </div>
+    </div>
+
+    <script src="../js/teacher.js"></script>
 </body>
 </html>
