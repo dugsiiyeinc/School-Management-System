@@ -68,7 +68,7 @@ body{
     align-items: center;
     cursor: pointer;
 }
-.Sittings_action{
+.Sittings_action, .Teacher_Sittings{
     position: absolute;
     bottom: 7%;
     left: 20px;

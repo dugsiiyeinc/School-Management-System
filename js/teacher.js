@@ -100,6 +100,15 @@ edit_T.addEventListener("click",()=>{
     sittings.style.display='block'
    
 
+    add_N_StudentC.classList.remove('left_side_active')
+    my_DataC.classList.remove('left_side_active')
+    my_ClassC.classList.remove('left_side_active')
+
+    add_N_StudentCM.classList.remove('left_side_active')
+    my_DataM.classList.remove('left_side_active')
+    my_ClassCM.classList.remove('left_side_active')
+
+
 })
 //  mobile funcions
 my_DataM.addEventListener("click",()=>{
@@ -112,6 +121,11 @@ my_DataM.addEventListener("click",()=>{
      my_ClassCM.classList.remove('left_side_active')
      add_N_StudentCM.classList.remove('left_side_active')
      my_DataM.classList.add('left_side_active')
+
+     add_N_StudentCM.classList.remove('left_side_active')
+     my_DataM.classList.add('left_side_active')
+     my_ClassCM.classList.remove('left_side_active')
+ 
 })
 my_ClassCM.addEventListener("click",()=>{
     teacherData.style.display='none'
