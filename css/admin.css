@@ -292,7 +292,7 @@ header {
 .form-container {
     width: 100%;
     max-width: 1000px;
-    height: auto; /* Adjust height based on content */
+    height: auto; 
     margin: 0 auto;
     background-color: #fff;
     padding: 30px;
@@ -412,8 +412,8 @@ header {
 .teacher-table th, .teacher-table td {
   
     /* border: 1px solid #ddd; */
-    padding: 15px 20px; /* Adjust padding as needed */
-    text-align: left; /* Align text to the left */
+    padding: 15px 20px; 
+    text-align: left; 
   
 
 }
@@ -492,15 +492,13 @@ header {
  .student-table{
         /* background-color: #0056b3; */
         margin-top: 20px;
-        /* width: 100%; */
         border-collapse: collapse;
         padding: 30px;
  }
  .student-table th, .student-table td {
   
-    /* border: 1px solid #ddd; */
-    padding: 15px 20px; /* Adjust padding as needed */
-    text-align: left; /* Align text to the left */
+    padding: 15px 20px; 
+    text-align: left; 
   
 
 }
