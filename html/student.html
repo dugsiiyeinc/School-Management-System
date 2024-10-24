@@ -1,11 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Student</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/student.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- mobile -->
+      <div class="humberger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="mobile">
+        <div class="logo">
+          <img src="../img/Ellipse 6.png" alt="" />
+          <p class="curent_teacher">Student: cali</p>
+        </div>
+        <ul class="actions">
+          <li class="my-DataM"><i class="fa-solid fa-database"></i> My Data</li>
+          <li class="Student_repotsM">
+            <i class="fa-regular fa-flag"></i>Students repots
+          </li>
+        </ul>
+      </div>
+
+      <!-- left side of dashbord -->
+      <div class="left_side">
+        <div class="logo">
+          <img src="../img/Ellipse 6.png" alt="" />
+          <p class="curent_teacher">
+            Student : <span class="curent_teacherR"></span>
+          </p>
+        </div>
+        <ul class="actions">
+          <li class="my-Data left_side_active">
+            <i class="fa-solid fa-database"></i> My Data
+          </li>
+
+          <li class="Student_repots">
+            <i class="fa-regular fa-flag"></i>Students repots
+          </li>
+        </ul>
+      </div>
+      <!-- rihgt side of dashbord -->
+      <div class="right_side">
+        <header class="header">
+          <div class="top" style="align-items: end">
+            <!-- <button class="add_student">Add Student</button> -->
+            <div class="lagput_notivication">
+              <i class="fa-regular fa-bell"></i>
+              <div class="color"></div>
+              <button class="lagout_btn">Lagout</button>
+            </div>
+          </div>
+          <!-- <div class="bottom_header">
+                      <div class="searching">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" class="studentSearching" placeholder="Search student name">
+                      </div>
+                </div> -->
+        </header>
+        <!-- section are here -->
+
+        <section class="StudentData">
+          <h1 style="color: #bbbb; font-size: 2rem">THIS IS Your DATA</h1>
+          <div class="maydata">
+            <img
+              src="https://imgs.search.brave.com/gvjaP-SuocK28zHutcrrrJNuVtkYygalGI_yUwCPnnI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTc0/MDAyNjc0L3Bob3Rv/L3Byb2ZpbGUtcG9y/dHJhaXQtZXllcy1j/bG9zZWQuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPU4zcXR2/QUctTWJtaG9qTWx5/SXprd0ZqdS0xc1U5/aHJtNURvVG9zVm95/cVE9"
+              alt="teacher-img"
+              class="teacher-img"
+            />
+
+            <ul class="content">
+              <li class="name">
+                Full Name: <small class="studentName">Cli cabdi nuur</small>
+              </li>
+              <li class="email">
+                Email : <small class="studentEmail">Cli@gmail.com</small>
+              </li>
+              <li class="name">
+                Password: <small class="studentPassword">123456</small>
+              </li>
+              <li class="name">
+                Class: <small class="studentClass">F41</small>
+              </li>
+              <li class="name">
+                Phone number: <small class="studentPhone">0929471030</small>
+              </li>
+              <li class="name">
+                Your class admin:
+                <small class="studentAdminTeacher">Cali</small>
+              </li>
+            </ul>
+          </div>
+          <div class="progres_container bbb">
+            <p>Your Progress Off Class</p>
+            <div class="progress">
+              <div class="progress_bar"></div>
+            </div>
+          </div>
+          <div class="progres_container">
+            <p>Your Progress Off School</p>
+            <div class="progress">
+              <div class="progress_bar_school"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="repots">repots</section>
+      </div>
+    </div>
+    <script src="../js/sudent.js"></script>
+  </body>
 </html>

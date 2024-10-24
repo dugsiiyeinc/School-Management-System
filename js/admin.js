@@ -50,7 +50,9 @@ TEACHER.addEventListener('click',()=>{
        let curentAdmin=adminData.find(admin=> admin.adminName == username.value && admin.password== password.value)
        if(curentAdmin){
         alert('Login Successful')
-        window.location.href='admin.html'
+        // let current_admin_user=username.value
+        localStorage.setItem('urrent_admin_user',JSON.stringify(`${username.value}`))
+        window.location.href='teacher.html'
        }else{
         alert(`admin ${username.value} is an exisist !`)
         return
