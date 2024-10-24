@@ -5,25 +5,48 @@ function setActiveMenuItem(id) {
 }
 
 document.querySelector('#teachers').addEventListener('click', () => {
+    setActiveMenuItem('teachers');
     toggleScreen('teachers-screen');
     loadTeachers();
+});
+
+document.querySelector('#students').addEventListener('click', () => {
+    setActiveMenuItem('students');
+    toggleScreen('student-screen');
+    loadStudents(); 
 });
 
 document.querySelector('.btn.add').addEventListener('click', () => {
     document.querySelector('.form-container').style.display = 'block';
     document.querySelector('.teacher-table').style.display = 'none';
     document.querySelector('.no-teachers').style.display = 'none'; 
+    document.querySelector('.student-table').style.display = 'none';
 });
+
+document.querySelector('#addStudentBtn').addEventListener('click', () => {
+    document.querySelector('#studentFormContainer').style.display = 'block';
+    // document.querySelector('.teacher-table').style.display = 'none';
+    document.querySelector('.student-table').style.display = 'none';
+    document.querySelector('.no-students').style.display = 'none';
+});
+
 
 document.querySelector('.teacher-form').addEventListener('submit', (event) => {
     event.preventDefault();
     addTeacher();
 });
 
+document.querySelector('.student-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    addStudent();
+});
+
 document.getElementById('searchInput').addEventListener('input', searchTeachers);
 
 function toggleScreen(screenId) {
     document.querySelector('#main-content').style.display = 'none';
+    document.querySelector('#student-screen').style.display = 'none';
+    document.querySelector('#teachers-screen').style.display = 'none';
     document.querySelector(`#${screenId}`).style.display = 'block';
 }
 
@@ -34,38 +57,57 @@ function addTeacher() {
     const gender = document.getElementById('gender').value;
     const subject = document.getElementById('subject').value;
 
-    // checks user
+
     if (!fullname || !email || !className || !gender || !subject) {
         alert("Please fill out all fields.");
         return;
     }
 
-    // Create a new teacher object
     const teacher = { fullname, email, className, gender, subject };
 
-    if (saveToLocalStorage(teacher)) {
+    if (saveToLocalStorage(teacher, 'teachers')) {
         alert("Teacher added successfully!");
         document.querySelector('.teacher-form').reset();
         document.querySelector('.form-container').style.display = 'none';
-
         loadTeachers(); 
-
         document.querySelector('.teacher-table').style.display = 'block'; 
     } else {
         alert("A teacher with this email already exists.");
     }
 }
 
-function saveToLocalStorage(teacher) {
-    let teachers = JSON.parse(localStorage.getItem('teachers')) || [];
+function addStudent() {
+    const name = document.getElementById('studentName').value.trim();
+    const studentClass = document.getElementById('studentClass').value;
+    const gender = document.getElementById('studentGender').value;
+    const email = document.getElementById('studentEmail').value.trim();
+    
 
-    const exists = teachers.some(existingTeacher => existingTeacher.email === teacher.email);
+    if (!name || !studentClass || !gender || !email) {
+        alert("Please fill out all fields.");
+        return;
+    }
+
+    const student = { name, studentClass, gender, email };
+    if (saveToLocalStorage(student, 'students')) {
+        alert("Student added successfully!");
+        document.querySelector('.student-form').reset();
+        document.querySelector('#studentFormContainer').style.display = 'none';
+        loadStudents(); 
+    } else {
+        alert("A student with this email already exists.");
+    }
+}
+
+function saveToLocalStorage(item, type) {
+    let items = JSON.parse(localStorage.getItem(type)) || [];
+    const exists = items.some(existingItem => existingItem.email === item.email);
     if (exists) {
         return false;
     }
 
-    teachers.push(teacher);
-    localStorage.setItem('teachers', JSON.stringify(teachers));
+    items.push(item);
+    localStorage.setItem(type, JSON.stringify(items));
     return true; 
 }
 
@@ -96,9 +138,40 @@ function loadTeachers() {
         tableBody.appendChild(newRow);
     });
 
-    
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', deleteTeacher);
+    });
+}
+
+function loadStudents() {
+    const students = JSON.parse(localStorage.getItem('students')) || [];
+    const tableBody = document.getElementById('studentList');
+    tableBody.innerHTML = '';
+
+    if (students.length === 0) {
+        document.querySelector('.no-students').style.display = 'block';
+        document.querySelector('.student-table').style.display = 'none';
+        return;
+    } else {
+        document.querySelector('.no-students').style.display = 'none';
+        document.querySelector('.student-table').style.display = 'table';
+    }
+
+    students.forEach((student, index) => {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${student.name}</td>
+            <td>${student.email}</td>
+            <td>${student.studentClass}</td>
+            <td>${student.gender}</td>
+
+            <td><button class="delete-student-btn" data-index="${index}">Delete</button></td>
+        `;
+        tableBody.appendChild(newRow);
+    });
+
+    document.querySelectorAll('.delete-student-btn').forEach(btn => {
+        btn.addEventListener('click', deleteStudent);
     });
 }
 
@@ -108,6 +181,14 @@ function deleteTeacher(event) {
     teachers.splice(index, 1); 
     localStorage.setItem('teachers', JSON.stringify(teachers));
     loadTeachers(); 
+}
+
+function deleteStudent(event) {
+    const index = event.target.getAttribute('data-index');
+    let students = JSON.parse(localStorage.getItem('students')) || [];
+    students.splice(index, 1); 
+    localStorage.setItem('students', JSON.stringify(students));
+    loadStudents(); 
 }
 
 function searchTeachers() {
@@ -134,6 +215,7 @@ function searchTeachers() {
 
 window.onload = function() {
     const activeSection = localStorage.getItem('activeSection') || 'teachers'; 
-    // toggleScreen(activeSection);
+    // setActiveMenuItem(activeSection);
+    // toggleScreen(`${activeSection}-screen`);
     loadTeachers();
 };
