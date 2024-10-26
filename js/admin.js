@@ -48,6 +48,13 @@ TEACHER.addEventListener('click',()=>{
        if(admin){
        let adminData=JSON.parse(localStorage.getItem('admins'))
        let curentAdmin=adminData.find(admin=> admin.adminName == username.value && admin.password== password.value)
+       let wrongPasword=adminData.find(admin=>admin.password == password.value)
+    //    console.log(curentAdmin)
+    
+       if(!wrongPasword){
+        alert('Wrong password**')
+        return
+       }
        if(curentAdmin){
         alert('Login Successful')
         // let current_admin_user=username.value
@@ -83,5 +90,9 @@ TEACHER.addEventListener('click',()=>{
             return
         }
        
+       }
+       if(admin==false && Teacher ==false && Student==false){
+        alert('please choose you path!')
+        return
        }
  })
