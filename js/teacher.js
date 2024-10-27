@@ -261,6 +261,26 @@ Sittings_actionM.addEventListener("click",()=>{
 
 })
 
+
+
+
+
+
+// repost functionalities
+ let top_repots=document.querySelector('.top_repots')
+ top_repots.addEventListener('click',(e)=>{
+    let Student_Repots_section=document.querySelector('.Student_Repots_section')
+    let Send_Repots_section=document.querySelector('.Send_Repots_section')
+    if(e.target.classList=='Student_Repots_btn'){
+        Send_Repots_section.style.display='none'
+        Student_Repots_section.style.display='block'
+    }else{
+        Send_Repots_section.style.display='block'
+        Student_Repots_section.style.display='none'
+    }
+
+ })
+
 // lagout
 let lagout_btn =document.querySelector('.lagout_btn')
 lagout_btn.addEventListener('click', ()=>{

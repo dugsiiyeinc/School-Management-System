@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -5,8 +6,9 @@
     
 }
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     background: #fdfbfa;
+    font-family: "Poppins", sans-serif;
 }
 
 .container{
@@ -260,7 +262,7 @@ header .bottom_header{
    display: flex;
    flex-direction: column;
    gap: 3rem;
-   padding: 3rem;
+   padding: 3rem 0;
    width: 100% !important;
 }
 
@@ -345,8 +347,114 @@ header .bottom_header{
     /* width: min(100%, 400px) !important; */
       
    }
+.repots{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.top_repots{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.top_repots h1{
+    font-size: 3rem;
+    color: #444;
+}
+.action_repost{
+    display: flex;
+    /* gap: 5px; */
+    font-size: 1.2rem;
+    align-items: center;
+   
+}
+.action_repost button{
+    font-size: 1.4rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+.action_repost button:hover{
+    background: #ddd;
+}
+.font{
+    font-size: 2rem;
+}
+.botom_repots{
+    display: flex;
+    flex-direction: column;
+    padding:0 10px ;
+    background-color: transparent;
+}
+.actt{
+    background-color:#ddd !important;
+}
 
+.Send_Repots_section{
+    display: none;
+}
+.Send_Repots_section p{
+    margin: 10px 0;
+    color: #aaa;
+}
+.Send_Repots_section form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: self-start;
+}
+.Send_Repots_section form textarea{
+    width: min(100%, 600px ) !important;
+    height: 300px !important;
+    padding: 20px;
+    font-size: 1.3rem;
+    outline: none;
+    border: none;
+    border: 1px solid #bbb;
+    background: transparent;
+}
+.Send_Repots_section form button{
+    padding:10px;
+    width: min(100%, 600px ) !important;
+    font-size: 1.3rem;
+    border: none;
+    background: #519cda;
+    color: white;
+    border-radius:5px ;
+    cursor: pointer;
+}
 
+.Send_Repots_section form button:hover{
+    background: #516cda !important;
+}
+.repost_container{
+    display: flex;
+    flex-direction: column;
+    /* gap: 20p; */
+}
+.colom{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 30px;
+    background: #eee;
+}
+.colom img{
+    border-radius: 50%;
+}
+.colom p{
+    color: #555;
+    font-weight: 500;
+    font-size: 18px;
+    /* font-family:po; */
+}
    .repots{
     display: none;
    }
