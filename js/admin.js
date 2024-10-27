@@ -3,6 +3,10 @@ function setActiveMenuItem(id) {
     document.querySelector(`#${id} a`).classList.add('active');
     localStorage.setItem('activeSection', id);
 }
+document.querySelector('#dashboard').addEventListener('click', () => {
+    setActiveMenuItem('dashboard');
+    toggleScreen('main-content');
+});
 
 document.querySelector('#teachers').addEventListener('click', () => {
     setActiveMenuItem('teachers');
@@ -40,8 +44,19 @@ document.querySelector('.student-form').addEventListener('submit', (event) => {
     event.preventDefault();
     addStudent();
 });
+document.getElementById('main-add').addEventListener('submit', (event) => {
+   
+    event.preventDefault();
+    console.log('clciked student')
+    // addStudent();
+});
+
 
 document.getElementById('searchInput').addEventListener('input', searchTeachers);
+document.querySelector('.logout').addEventListener('click', function(){
+    console.log('logged out');
+    window.location.href = '../js/login.html';
+});
 
 function toggleScreen(screenId) {
     document.querySelector('#main-content').style.display = 'none';
@@ -214,8 +229,19 @@ function searchTeachers() {
 }
 
 window.onload = function() {
-    const activeSection = localStorage.getItem('activeSection') || 'teachers'; 
+    const activeSection = localStorage.getItem('activeSection') || 'dashboard'; 
     // setActiveMenuItem(activeSection);
     // toggleScreen(`${activeSection}-screen`);
-    loadTeachers();
+    
+    if (activeSection === 'teachers') {
+        loadTeachers();
+    } else if (activeSection === 'students') {
+        loadStudents();
+    } else {
+        // Load any default content for the dashboard if needed
+    }
 };
+document.querySelector('#dashboard').addEventListener('click', () => {
+    setActiveMenuItem('dashboard');
+    toggleScreen('main-content');
+});
