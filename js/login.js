@@ -1,51 +1,87 @@
-document.getElementById('account-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
+let admin=false;
+let Teacher=false;
+let Student=false;
 
-    // Get values from input fields
-    const adminName = document.getElementById('admin-name').value;
-    const schoolName = document.getElementById('school-name').value;
-    const password = document.getElementById('password').value;
+let ADMIN=document.querySelector('#ADMIN')
+let TEACHER=document.querySelector('#TEACHER')
+let STUDENT=document.querySelector('#STUDENT')
+let FORM=document.querySelector('#loginForm')
+// console.log(admin,Teacher,Student)
 
-    if (adminName.trim() === '' || schoolName.trim() === '' || password.trim() === '') {
-        alert('Please fill in all fields');
-        return;
-    }
-    if (password.length < 3) {
-        alert('Password must be at least 6 characters long');
-        return;
-    }
+ADMIN.addEventListener('click',()=>{
+   admin=true
+   Teacher=false
+   Student=false
+   STUDENT.style.border='none'
+   TEACHER.style.border='none'
+    ADMIN.style.border='solid #000 2px'
+//    console.log(admin,Teacher,Student)
+})
 
-    function saveToLocalStorage() {
-        let users = JSON.parse(localStorage.getItem('admins')) || [];
-        
-        const newUser = {
-            adminName: adminName,
-            schoolName: schoolName,
-            password: password,
-        };
+TEACHER.addEventListener('click',()=>{
+    admin=false
+    Teacher=true
+    Student=false
+    STUDENT.style.border='none'
+    ADMIN.style.border='none'
+    TEACHER.style.border='solid #000 2px'
+    // console.log(admin,Teacher,Student)
+ })
 
-        // Check if the user already exists
-        const existingUser = users.find(user => user.adminName === adminName && user.schoolName === schoolName);
-        if (existingUser) {
-            alert('This account already exists.');
-            return;
+ STUDENT.addEventListener('click',()=>{
+    admin=false
+    Teacher=false
+    Student=true
+   ADMIN.style.border='none'
+   TEACHER.style.border='none'
+   STUDENT.style.border='solid #000 2px'
+    // console.log(admin,Teacher,Student)
+ })
+
+
+
+ FORM.addEventListener('submit',(e)=>{
+    e.preventDefault()
+    let username=document.querySelector('#username')
+      let password=document.querySelector('#password')
+     
+       if(admin){
+       let adminData=JSON.parse(localStorage.getItem('admins'))
+       let curentAdmin=adminData.find(admin=> admin.adminName == username.value && admin.password== password.value)
+       if(curentAdmin){
+        alert('Login Successful')
+        // let current_admin_user=username.value
+        localStorage.setItem('urrent_admin_user',JSON.stringify(`${username.value}`))
+        window.location.href='teacher.html'
+       }else{
+        alert(`admin ${username.value} is an exisist !`)
+        return
+       }
+       
+       }
+
+       if(Teacher){
+        let adminData=JSON.parse(localStorage.getItem('teacher'))
+        let curentAdmin=adminData.find(admin=> admin.Username == username.value && admin.Password== password.value)
+        if(curentAdmin){
+         alert('Login Successful')
+         window.location.href='teacher.html'
+        }else{
+            alert(`Teacher ${username.value} is an exisist !`)
+            return
         }
-
-        // Add the new user to the array
-        users.push(newUser);
-        
-        // Save the updated users array back to local storage
-        localStorage.setItem('admins', JSON.stringify(users));
-        
-        // Clear input fields
-        document.getElementById('admin-name').value = '';
-        document.getElementById('school-name').value = '';
-        document.getElementById('password').value = '';
-
-        alert('Account created successfully!');
-        
-    }
-
-    saveToLocalStorage();
-      window.location.href='login.html'
-});
+       
+       }
+       if(Student){
+        let adminData=JSON.parse(localStorage.getItem('student'))
+        let curentAdmin=adminData.find(admin=> admin.Username == username.value && admin.Password== password.value)
+        if(curentAdmin){
+         alert('Login Successful')
+         window.location.href='student.html'
+        }else{
+            alert(`Student ${username.value} is an exisist !`)
+            return
+        }
+       
+       }
+ })
