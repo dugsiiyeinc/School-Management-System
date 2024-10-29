@@ -22,6 +22,7 @@ let Add_new_student= document.querySelector(".Add_new_student")
 let bottom_header= document.querySelector(".bottom_header")
 let sittings= document.querySelector(".sittings")
 let repots= document.querySelector(".repots")
+
 // actions of sections
 let my_DataC= document.querySelector(".my-Data")
 let my_ClassC= document.querySelector(".my-Class")
@@ -57,6 +58,7 @@ my_DataC.addEventListener("click",()=>{
      my_ClassCM.classList.remove('left_side_active')
      add_N_StudentCM.classList.remove('left_side_active')
      my_DataM.classList.add('left_side_active')
+    Student_repotsM.classList.remove('left_side_active')
 })
 my_ClassC.addEventListener("click",()=>{
     teacherData.style.display='none'
@@ -75,6 +77,7 @@ my_ClassC.addEventListener("click",()=>{
     add_N_StudentCM.classList.remove('left_side_active')
     my_DataM.classList.remove('left_side_active')
     my_ClassCM.classList.add('left_side_active')
+    Student_repotsM.classList.remove('left_side_active')
 })
 add_N_StudentC.addEventListener("click",()=>{
     teacherData.style.display='none'
@@ -93,6 +96,7 @@ add_N_StudentC.addEventListener("click",()=>{
     add_N_StudentCM.classList.add('left_side_active')
     my_DataM.classList.remove('left_side_active')
     my_ClassCM.classList.remove('left_side_active')
+    Student_repotsM.classList.remove('left_side_active')
 
 })
 Student_repots.addEventListener("click",()=>{
@@ -108,9 +112,10 @@ Student_repots.addEventListener("click",()=>{
     my_DataC.classList.remove('left_side_active')
     my_ClassC.classList.remove('left_side_active')
 
-    add_N_StudentCM.classList.add('left_side_active')
+    add_N_StudentCM.classList.remove('left_side_active')
     my_DataM.classList.remove('left_side_active')
     my_ClassCM.classList.remove('left_side_active')
+    Student_repotsM.classList.add('left_side_active')
 
 })
 Sittings_action.addEventListener("click",()=>{
@@ -126,6 +131,11 @@ Sittings_action.addEventListener("click",()=>{
     add_N_StudentC.classList.remove('left_side_active')
     my_DataC.classList.remove('left_side_active')
     my_ClassC.classList.remove('left_side_active')
+
+    add_N_StudentCM.classList.remove('left_side_active')
+    my_DataM.classList.remove('left_side_active')
+    my_ClassCM.classList.remove('left_side_active')
+   Student_repotsM.classList.remove('left_side_active')
 
 
 })
@@ -159,14 +169,13 @@ my_DataM.addEventListener("click",()=>{
     repots.style.display='none'
 
      Student_repots.classList.remove('left_side_active')
-
      my_ClassCM.classList.remove('left_side_active')
      add_N_StudentCM.classList.remove('left_side_active')
      my_DataM.classList.add('left_side_active')
 
-     add_N_StudentCM.classList.remove('left_side_active')
-     my_DataM.classList.add('left_side_active')
-     my_ClassCM.classList.remove('left_side_active')
+     add_N_StudentC.classList.remove('left_side_active')
+     my_DataC.classList.add('left_side_active')
+     my_ClassC.classList.remove('left_side_active')
     Student_repotsM.classList.remove('left_side_active')
 
  
@@ -185,6 +194,11 @@ my_ClassCM.addEventListener("click",()=>{
     my_ClassCM.classList.add('left_side_active')
     Student_repotsM.classList.remove('left_side_active')
 
+    add_N_StudentC.classList.remove('left_side_active')
+    my_DataC.classList.remove('left_side_active')
+    my_ClassC.classList.add('left_side_active')
+   Student_repots.classList.remove('left_side_active')
+
 })
 add_N_StudentCM.addEventListener("click",()=>{
     teacherData.style.display='none'
@@ -198,6 +212,11 @@ add_N_StudentCM.addEventListener("click",()=>{
     my_DataM.classList.remove('left_side_active')
     my_ClassCM.classList.remove('left_side_active')
     Student_repotsM.classList.remove('left_side_active')
+
+    add_N_StudentC.classList.add('left_side_active')
+    my_DataC.classList.remove('left_side_active')
+    my_ClassC.classList.remove('left_side_active')
+   Student_repots.classList.remove('left_side_active')
 
 })
 Student_repotsM.addEventListener("click",()=>{
@@ -214,6 +233,11 @@ Student_repotsM.addEventListener("click",()=>{
     add_N_StudentCM.classList.remove('left_side_active')
     my_DataM.classList.remove('left_side_active')
     my_ClassCM.classList.remove('left_side_active')
+
+    add_N_StudentC.classList.remove('left_side_active')
+    my_DataC.classList.remove('left_side_active')
+    my_ClassC.classList.remove('left_side_active')
+   Student_repots.classList.add('left_side_active')
 
 })
 Sittings_actionM.addEventListener("click",()=>{
@@ -237,13 +261,32 @@ Sittings_actionM.addEventListener("click",()=>{
 
 })
 
+
+
+
+
+
+// repost functionalities
+ let top_repots=document.querySelector('.top_repots')
+ top_repots.addEventListener('click',(e)=>{
+    let Student_Repots_section=document.querySelector('.Student_Repots_section')
+    let Send_Repots_section=document.querySelector('.Send_Repots_section')
+    if(e.target.classList=='Student_Repots_btn'){
+        Send_Repots_section.style.display='none'
+        Student_Repots_section.style.display='block'
+    }else{
+        Send_Repots_section.style.display='block'
+        Student_Repots_section.style.display='none'
+    }
+
+ })
+
 // lagout
 let lagout_btn =document.querySelector('.lagout_btn')
 lagout_btn.addEventListener('click', ()=>{
     localStorage.removeItem('urrent_admin_user')
      window.location.href='login.html'
 })
-
 
 
 let arrey=[
@@ -265,3 +308,8 @@ let want =arrey.filter(curent=> curent.number>=10)
 console.log(want)
 want.forEach(want=>console.log(want))
 
+document.querySelectorAll('.student_data').forEach(curentstudent=>{
+     curentstudent.addEventListener('click',()=>{
+        alert('hello')
+     })
+})
