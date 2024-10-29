@@ -22,10 +22,11 @@ function setActiveMenuItem(id) {
     document.querySelector(`#${id} a`).classList.add('active');
     localStorage.setItem('activeSection', id);
 }
-// document.querySelector('#dashboard').addEventListener('click', () => {
-//     setActiveMenuItem('dashboard');
-//     toggleScreen('main-content');
-// });
+
+document.querySelector('#dashboard').addEventListener('click', () => {
+    setActiveMenuItem('dashboard');
+    toggleScreen('main-content');
+});
 
 // document.querySelector('#teachers').addEventListener('click', () => {
 //     setActiveMenuItem('teachers');
@@ -72,12 +73,15 @@ document.querySelector('.student-form').addEventListener('submit', (event) => {
     event.preventDefault();
     addStudent();
 });
-document.getElementById('main-add').addEventListener('submit', (event) => {
-   
-    event.preventDefault();
-    console.log('clciked student')
-    // addStudent();
+document.getElementById('main-add').addEventListener('click', () => {
+    setActiveMenuItem('students');
+    toggleScreen('student-screen');
+    loadStudents(); 
+    document.querySelector('#studentFormContainer').style.display = 'block'; 
+    document.querySelector('#studentTable').style.display = 'none'; 
 });
+
+
 
 
 document.getElementById('searchInput').addEventListener('input', searchTeachers);
@@ -266,10 +270,6 @@ window.onload = function() {
     } else if (activeSection === 'students') {
         loadStudents();
     } else {
-        // Load any default content for the dashboard if needed
     }
 };
-document.querySelector('#dashboard').addEventListener('click', () => {
-    setActiveMenuItem('dashboard');
-    toggleScreen('main-content');
-});
+
