@@ -41,7 +41,7 @@ document.querySelector('#students').addEventListener('click', () => {
 });
 document.querySelectorAll('.menu-item a').forEach(menuItem => {
     menuItem.addEventListener('click', () => {
-        const sectionId = menuItem.parentElement.id; // Assuming menu item parent is an ID
+        const sectionId = menuItem.parentElement.id; 
         setActiveMenuItem(sectionId);
         toggleScreen(`${sectionId}-screen`);
         if (sectionId === 'teachers') loadTeachers();
@@ -85,9 +85,20 @@ document.getElementById('main-add').addEventListener('click', () => {
 
 
 document.getElementById('searchInput').addEventListener('input', searchTeachers);
+
 document.querySelector('.logout').addEventListener('click', function(){
-    console.log('logged out');
-    window.location.href = '../js/login.html';
+    // console.log('logged out');
+    window.location.href = 'register.html';
+    // window.location.href='student.html'
+
+
+});
+document.querySelector('.bax').addEventListener('click', function(){
+    // console.log('logged out');
+    window.location.href = 'register.html';
+    // window.location.href='student.html'
+
+
 });
 
 function toggleScreen(screenId) {
