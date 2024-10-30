@@ -1,8 +1,21 @@
-document.addEventListener('DOMContentLoaded',()=>{
-    let curent_teacher=document.querySelector('.curent_teacherR')
-    let current_Teacher_user=JSON.parse(localStorage.getItem('urrent_admin_user'))
-    curent_teacher.innerHTML=current_Teacher_user
-})
+document.addEventListener('DOMContentLoaded', () => {
+    const currentTeacher = document.querySelector('.curent_teacherR');
+    const currentTeacherUser = JSON.parse(localStorage.getItem('current_user'));
+
+    if (currentTeacherUser && currentTeacherUser.type === 'teacher') {
+        currentTeacher.innerHTML = ` ${currentTeacherUser.fullname}`;
+    } else {
+        currentTeacher.innerHTML = 'No teacher information available.';
+    }
+});
+
+// window.onload = function() {
+//     const currentUser = JSON.parse(localStorage.getItem('current_user'));
+//     if (currentUser && currentUser.type === 'teacher') {
+//         document.getElementById('currentTeacher').innerText = `Teacher: ${currentUser.username}`;
+//     }
+//     // Halkan waxaad ku dari kartaa koodhkaaga kale
+// };
 
 // responsiveness
 let hambergr= document.querySelector(".humberger")

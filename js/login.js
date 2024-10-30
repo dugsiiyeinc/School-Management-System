@@ -56,22 +56,29 @@ FORM.addEventListener('submit', (e) => {
         let currentTeacher = teacherData.find(teacher => teacher.email === email && teacher.password === password);
         if (currentTeacher) {
             alert('Login Successful');
-            // localStorage.setItem('current_user', JSON.stringify({ type: 'teacher', email })); 
+            localStorage.setItem('current_user', JSON.stringify({ type: 'teacher', fullname: currentTeacher.fullname })); 
             window.location.href = 'teacher.html'; 
         } else {
             alert(`Teacher ${email} does not exist!`);
         }
     }
+    
 
     if (Student) {
         let studentData = JSON.parse(localStorage.getItem('students')) || [];
         let currentStudent = studentData.find(student => student.email === email && student.password === password);
+        
         if (currentStudent) {
             alert('Login Successful');
-            // localStorage.setItem('current_user', JSON.stringify({ type: 'student', email })); 
-            window.location.href = 'student.html'; 
+            localStorage.setItem('current_user_student', JSON.stringify({ type: 'student', name: currentStudent.name }));
+            window.location.href = 'student.html';
         } else {
             alert(`Student ${email} does not exist!`);
         }
+      
     }
+    
+    
+
+    
 });

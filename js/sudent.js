@@ -1,8 +1,18 @@
-document.addEventListener('DOMContentLoaded',()=>{
-    let curent_teacher=document.querySelector('.curent_teacherR')
-    let current_Teacher_user=JSON.parse(localStorage.getItem('urrent_admin_user'))
-    curent_teacher.innerHTML=current_Teacher_user
-})
+document.addEventListener('DOMContentLoaded', () => {
+    const currentStudent = document.querySelector('.currentStudent');
+    const currentStudentUser = JSON.parse(localStorage.getItem('current_user_student'));
+
+    if (currentStudentUser && currentStudentUser.type === 'student') {
+        currentStudent.innerHTML = `${currentStudentUser.name}`;
+        console.log(`Student: ${currentStudentUser.name}`);
+    } else {
+        currentStudent.innerHTML = 'No student information available.';
+    }
+});
+
+
+
+
 
 // responsiveness
 let hambergr= document.querySelector(".humberger")
