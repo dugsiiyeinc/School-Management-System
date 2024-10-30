@@ -114,6 +114,7 @@ function addTeacher() {
     const className = document.getElementById('class').value;
     const gender = document.getElementById('gender').value;
     const subject = document.getElementById('subject').value;
+    const password =  document.getElementById('password').value;
 
 
     if (!fullname || !email || !className || !gender || !subject) {
@@ -121,7 +122,7 @@ function addTeacher() {
         return;
     }
 
-    const teacher = { fullname, email, className, gender, subject };
+    const teacher = { fullname, email, className, gender, subject, password };
 
     if (saveToLocalStorage(teacher, 'teachers')) {
         alert("Teacher added successfully!");
@@ -139,6 +140,7 @@ function addStudent() {
     const studentClass = document.getElementById('studentClass').value;
     const gender = document.getElementById('studentGender').value;
     const email = document.getElementById('studentEmail').value.trim();
+    const password = document.getElementById('studentPassword').value
     
 
     if (!name || !studentClass || !gender || !email) {
@@ -146,7 +148,7 @@ function addStudent() {
         return;
     }
 
-    const student = { name, studentClass, gender, email };
+    const student = { name, studentClass, gender, email, password };
     if (saveToLocalStorage(student, 'students')) {
         alert("Student added successfully!");
         document.querySelector('.student-form').reset();
