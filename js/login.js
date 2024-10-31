@@ -1,51 +1,84 @@
-document.getElementById('account-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
+let admin = false;
+let Teacher = false;
+let Student = false;
 
-    // Get values from input fields
-    const adminName = document.getElementById('admin-name').value;
-    const schoolName = document.getElementById('school-name').value;
-    const password = document.getElementById('password').value;
+let ADMIN = document.querySelector('#ADMIN');
+let TEACHER = document.querySelector('#TEACHER');
+let STUDENT = document.querySelector('#STUDENT');
+let FORM = document.querySelector('#loginForm');
 
-    if (adminName.trim() === '' || schoolName.trim() === '' || password.trim() === '') {
-        alert('Please fill in all fields');
-        return;
-    }
-    if (password.length < 3) {
-        alert('Password must be at least 6 characters long');
-        return;
-    }
+ADMIN.addEventListener('click', () => {
+    admin = true;
+    Teacher = false;
+    Student = false;
+    STUDENT.style.border = 'none';
+    TEACHER.style.border = 'none';
+    ADMIN.style.border = 'solid #000 2px';
+});
 
-    function saveToLocalStorage() {
-        let users = JSON.parse(localStorage.getItem('admins')) || [];
-        
-        const newUser = {
-            adminName: adminName,
-            schoolName: schoolName,
-            password: password,
-        };
+TEACHER.addEventListener('click', () => {
+    admin = false;
+    Teacher = true;
+    Student = false;
+    STUDENT.style.border = 'none';
+    ADMIN.style.border = 'none';
+    TEACHER.style.border = 'solid #000 2px';
+});
 
-        // Check if the user already exists
-        const existingUser = users.find(user => user.adminName === adminName && user.schoolName === schoolName);
-        if (existingUser) {
-            alert('This account already exists.');
-            return;
+STUDENT.addEventListener('click', () => {
+    admin = false;
+    Teacher = false;
+    Student = true;
+    ADMIN.style.border = 'none';
+    TEACHER.style.border = 'none';
+    STUDENT.style.border = 'solid #000 2px';
+});
+
+FORM.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let email = document.querySelector('#username').value; // Username should be email
+    let password = document.querySelector('#password').value;
+
+    if (admin) {
+        let adminData = JSON.parse(localStorage.getItem('admins')) || [];
+        let currentAdmin = adminData.find(admin => admin.email === email && admin.password === password);
+        if (currentAdmin) {
+            alert('Login Successful');
+            localStorage.setItem('current_user', JSON.stringify({ type: 'admin', email })); 
+            window.location.href = 'admin.html'; 
+        } else {
+            alert(`Admin ${email} does not exist!`);
         }
-
-        // Add the new user to the array
-        users.push(newUser);
-        
-        // Save the updated users array back to local storage
-        localStorage.setItem('admins', JSON.stringify(users));
-        
-        // Clear input fields
-        document.getElementById('admin-name').value = '';
-        document.getElementById('school-name').value = '';
-        document.getElementById('password').value = '';
-
-        alert('Account created successfully!');
-        
     }
 
-    saveToLocalStorage();
-      window.location.href='login.html'
+    if (Teacher) {
+        let teacherData = JSON.parse(localStorage.getItem('teachers')) || [];
+        let currentTeacher = teacherData.find(teacher => teacher.email === email && teacher.password === password);
+        if (currentTeacher) {
+            alert('Login Successful');
+            localStorage.setItem('current_user', JSON.stringify({ type: 'teacher', fullname: currentTeacher.fullname })); 
+            window.location.href = 'teacher.html'; 
+        } else {
+            alert(`Teacher ${email} does not exist!`);
+        }
+    }
+    
+
+    if (Student) {
+        let studentData = JSON.parse(localStorage.getItem('students')) || [];
+        let currentStudent = studentData.find(student => student.email === email && student.password === password);
+        
+        if (currentStudent) {
+            alert('Login Successful');
+            localStorage.setItem('current_user_student', JSON.stringify({ type: 'student', name: currentStudent.name }));
+            window.location.href = 'student.html';
+        } else {
+            alert(`Student ${email} does not exist!`);
+        }
+      
+    }
+    
+    
+
+    
 });
