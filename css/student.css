@@ -186,7 +186,39 @@ body{
    /* .StudentData{
     display: none;
    } */
-
+  .repots h2{
+    font-size: 3rem;
+    margin: 2rem 0;
+    color: #666;
+  }
+  .repots form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .repots form{
+    width: min(100%,700px);
+  }
+  .repots form textarea{
+    height: 300px;
+    padding: 10px;
+    font-size: 1.4rem;
+    background: transparent;
+    border: none;
+    border: 1px solid #cccc;
+    outline: none;
+  }
+  .repots form button{
+    background: #519cda;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+  }
+  .repots form button:hover{
+    background: #516cda;
+  }
 @media (max-width:1430px){
     .edit-T{
         right: 0%;
