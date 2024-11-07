@@ -36,7 +36,7 @@ STUDENT.addEventListener('click', () => {
 
 FORM.addEventListener('submit', (e) => {
     e.preventDefault();
-    let email = document.querySelector('#username').value; // Username should be email
+    let email = document.querySelector('#username').value; 
     let password = document.querySelector('#password').value;
 
     if (admin) {

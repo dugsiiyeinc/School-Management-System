@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const currentStudent = document.querySelector('.currentStudent');
+    const currentStudent = document.getElementById('currentStudent');
     const currentStudentUser = JSON.parse(localStorage.getItem('current_user_student'));
 
     if (currentStudentUser && currentStudentUser.type === 'student') {

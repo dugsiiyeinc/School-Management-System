@@ -9,13 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// window.onload = function() {
-//     const currentUser = JSON.parse(localStorage.getItem('current_user'));
-//     if (currentUser && currentUser.type === 'teacher') {
-//         document.getElementById('currentTeacher').innerText = `Teacher: ${currentUser.username}`;
-//     }
-//     // Halkan waxaad ku dari kartaa koodhkaaga kale
-// };
+
 
 // responsiveness
 let hambergr= document.querySelector(".humberger")

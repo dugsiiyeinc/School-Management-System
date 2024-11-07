@@ -273,6 +273,33 @@ function searchTeachers() {
     document.querySelector('.no-teachers').style.display = hasTeachers ? 'none' : 'block';
 }
 
+document.getElementById('studentSearchInput').addEventListener('input', searchStudents);
+
+function searchStudents() {
+    console.log('searchStudents triggered'); // Debug log
+    const input = document.getElementById('studentSearchInput').value.toLowerCase();
+    const tableBody = document.getElementById('studentList');
+    const rows = tableBody.getElementsByTagName('tr');
+    let hasStudents = false;
+
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        const name = row.cells[0].textContent.toLowerCase();
+        const studentClass = row.cells[2].textContent.toLowerCase();
+
+        if (name.includes(input) || studentClass.includes(input)) {
+            row.style.display = ''; 
+            hasStudents = true;
+        } else {
+            row.style.display = 'none'; 
+        }
+    }
+
+    document.querySelector('.no-students').style.display = hasStudents ? 'none' : 'block';
+}
+
+
+
 window.onload = function() {
     const activeSection = localStorage.getItem('activeSection') || 'dashboard'; 
     // setActiveMenuItem(activeSection);
