@@ -40,9 +40,8 @@ FORM.addEventListener('submit', (e) => {
     let password = document.querySelector('#password').value;
 
     if (admin) {
-        let adminData = JSON.parse(localStorage.getItem('admins')) || [];
-        let currentAdmin = adminData.find(admin => admin.email === email && admin.password === password);
-        if (currentAdmin) {
+        let adminData = JSON.parse(localStorage.getItem('admin'))
+        if (adminData.adminName===email && adminData.password===password) {
             alert('Login Successful');
             localStorage.setItem('current_user', JSON.stringify({ type: 'admin', email })); 
             window.location.href = 'admin.html'; 
@@ -78,7 +77,9 @@ FORM.addEventListener('submit', (e) => {
       
     }
     
-    
+    if(admin==false && Teacher== false && Student==false){
+        alert('Choose your type')
+    }
 
     
 });
