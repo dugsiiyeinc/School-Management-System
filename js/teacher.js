@@ -1,12 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const currentTeacher = document.querySelector('.curent_teacherR');
+    const teach_img = document.querySelectorAll('#teach_img');
     const currentTeacherUser = JSON.parse(localStorage.getItem('current_user'));
-
+    const teachers = JSON.parse(localStorage.getItem('teachers'));
+    let teacher=teachers.find(teach=>teach.fullname == currentTeacherUser.fullname)
+   
     if (currentTeacherUser && currentTeacherUser.type === 'teacher') {
         currentTeacher.innerHTML = ` ${currentTeacherUser.fullname}`;
+        // teach_img.src=teacher.img
+        teach_img.forEach(imgg=> imgg.src=teacher.img)
     } else {
         currentTeacher.innerHTML = 'No teacher information available.';
     }
+    loadingTeacherData(currentTeacherUser.fullname)
+    lookingAddStudentAccees(currentTeacherUser.fullname)
 });
 
 
@@ -85,6 +92,8 @@ my_ClassC.addEventListener("click",()=>{
     my_DataM.classList.remove('left_side_active')
     my_ClassCM.classList.add('left_side_active')
     Student_repotsM.classList.remove('left_side_active')
+
+    loadinhClass()
 })
 add_N_StudentC.addEventListener("click",()=>{
     teacherData.style.display='none'
@@ -281,20 +290,99 @@ Sittings_actionM.addEventListener("click",()=>{
     if(e.target.classList=='Student_Repots_btn'){
         Send_Repots_section.style.display='none'
         Student_Repots_section.style.display='block'
+
     }else{
         Send_Repots_section.style.display='block'
         Student_Repots_section.style.display='none'
+      
     }
-
+    
  })
 
 // lagout
 let lagout_btn =document.querySelector('.lagout_btn')
 lagout_btn.addEventListener('click', ()=>{
-    localStorage.removeItem('urrent_admin_user')
+    localStorage.removeItem('current_user')
      window.location.href='login.html'
 })
+// loadingTeacherData
+let loadingTeacherData=(teacherName)=>{
+    let teacher_img=document.querySelector('.teacher-img')
+    let teachername=document.querySelector('.teacherName')
+    let teacherPassword=document.querySelector('.teacherPassword')
+    let teacherClass=document.querySelector('.teacherClass')
+    let teacherPhone=document.querySelector('.teacherPhone')
+    let teachers=JSON.parse(localStorage.getItem('teachers'))
+    let teacher=teachers.find(teach=>teach.fullname ==teacherName)
+    teacher_img.src=teacher.img
+    teachername.innerHTML=` ${teacher.fullname}`
+    teacherPassword.innerHTML=`Password:   <span class='tech_p'> <p>${teacher.password} </p></span>  <i class="fa-solid fa-eye">`
+    teacherClass.innerHTML=` ${teacher.className}`
+    teacherPhone.innerHTML=` ${teacher.phone}`
+    teacherPassword.querySelector('.fa-solid').addEventListener('click',()=>{
+       let tech_pd=teacherPassword.querySelector('.tech_p')
+       tech_pd.querySelector('p').classList.toggle('pas')
+      
+    })
+}
+// loadingAccessForeAddingStudent
+let lookingAddStudentAccees=(teachername)=>{
+    let add_N_StudentC= document.querySelector(".add-N-Student")
+    let add_N_StudentCM= document.querySelector(".add-N-StudentM")
+    let  add_student_top=document.querySelector('.add_student_top')
+    let teachers=JSON.parse(localStorage.getItem('teachers'))
+    let teacher=teachers.find(teach=>teach.fullname ==teachername)
+    if(teacher.add_student=='yes'){
+        add_N_StudentC.style.display='flex'
+        add_N_StudentCM.style.display='flex'
+    }else{
+        add_N_StudentC.style.display='none'
+        add_N_StudentCM.style.display='none'
+        add_student_top.style.background='#ccc'
+        add_student_top.style.cursor='not-allowed'
+    }
+  
+}
 
+let loadinhClass=()=>{
+    const currentTeacherUser = JSON.parse(localStorage.getItem('current_user'));
+    const teachers=JSON.parse(localStorage.getItem('teachers'))
+    const students=JSON.parse(localStorage.getItem('students'))
+    const teacher=teachers.find(teach=>teach.fullname ==currentTeacherUser.fullname)
+    const TeacherGarade=teacher.className
+    const want=students.filter(stud=>stud.studentClass == TeacherGarade)
+    let student_data_Parent_div=document.querySelector('.student_data_Parent')
+    student_data_Parent_div.innerHTML=''
+       if(want){
+        want.forEach((stud,index) => {
+            // console.log(stud)
+            let student_data=document.createElement('div')
+            student_data.classList.add('student_data')
+            student_data.innerHTML=`
+                     <span class="table_name"><img src="${stud.img}" alt="" class="student_img"> <span class="name">${stud.name}</span></span>
+                        
+                        <span class="table_Email">${stud.email}</span>
+                        <span class="table_Class">${stud.studentClass}</span>
+                        <span class="TABLE_Gender">${stud.gender}</span>
+                        <span style="display: flex;align-items: center;gap: 10px;"><button class="edit">Edit</button><button class="delete">Delete</button></span>
+            `
+            
+            student_data_Parent_div.appendChild(student_data)
+           
+            attachAddevent(student_data,index)
+        });
+       }
+};
+
+function attachAddevent(div,index){
+  let deleteBtn= div.querySelector('.delete')
+  deleteBtn.addEventListener('click',()=>{
+    const students=JSON.parse(localStorage.getItem('students'))
+    students.splice(index,1)
+    localStorage.setItem('students',JSON.stringify(students))
+    div.remove()
+  })
+}
 
 let arrey=[
     {
@@ -311,12 +399,12 @@ let arrey=[
         number:30
     }
 ]
-let want =arrey.filter(curent=> curent.number>=10)
-console.log(want)
-want.forEach(want=>console.log(want))
+// let want =arrey.filter(curent=> curent.number>=10)
+// console.log(want)
+// want.forEach(want=>console.log(want))
 
-document.querySelectorAll('.student_data').forEach(curentstudent=>{
-     curentstudent.addEventListener('click',()=>{
-        alert('hello')
-     })
-})
+// document.querySelectorAll('.student_data').forEach(curentstudent=>{
+//      curentstudent.addEventListener('click',()=>{
+//         alert('hello')
+//      })
+// })

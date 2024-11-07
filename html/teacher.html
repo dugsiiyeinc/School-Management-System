@@ -17,6 +17,8 @@
             <div class="logo">
                 <img src="../img/Ellipse 6.png" alt="">
                 <p id="currentTeacher" class="current_teacher">Teacher: </p>
+                <img src="../img/Ellipse 6.png" alt="" id="teach_img" style="border-radius: 50%;">
+                <p id="currentTeacher" class="current_teacher"> </p>
             </div>
             
             <ul class="actions">
@@ -34,7 +36,7 @@
         <!-- left side of dashbord -->
         <div class="left_side">
             <div class="logo">
-                <img src="../img/Ellipse 6.png" alt="">
+                <img src="../img/Ellipse 6.png" alt="" id="teach_img" style="border-radius: 50%; height: 100px; width: 100px;">
                 <p class="curent_teacher">
                     Teacher: <span  class="curent_teacherR"></span>
                 </p>
@@ -70,49 +72,74 @@
             <!-- section are here -->
 
             <section class="teacherData">
+                 <div class="container2">
+                     <h1 style="text-align: center;">Welcome to your dashboard, Udemy school</h1>
+                     <span>You have access to your dashboard</span>
+                     <div class="mm">
+                        <ul>
+                        <li>
+                            <div class="top">
+                                <i class="fa-solid fa-user-shield"></i>
+                                <h2>See Your Data</h2>
+                            </div>
+                            <p>you can see you r data and access Lorem ipsum dolor sit amet consectetur Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio in ullam, hic nihil debitis error quos aliquam ea sapiente cumque.</p>
+                        </li>
+                        <li>
+                            <div class="top">
+                                <i class="fa-regular fa-square-plus"></i>
+                                <h2>Add Student If You Have Access</h2>
+                            </div>
+                            <p>you can see you r data class and access Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero rem tempore officiis fugit iusto eveniet?</p>
+                        </li>
+                        <li>
+                            <div class="top">
+                                <i class="fa-regular fa-eye"></i>
+                                <h2>Send Repor and See Student Reports</h2>
+                            </div>
+                            <p>you can see you r data and access Lorem ipsum dolor sit amet consectetur Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus reiciendis fugiat quibusdam nulla facilis.</p>
+                        </li>
+                     </ul></div>
+
+                     
+
                   <div class="maydata">
-                    <img src="https://imgs.search.brave.com/gvjaP-SuocK28zHutcrrrJNuVtkYygalGI_yUwCPnnI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTc0/MDAyNjc0L3Bob3Rv/L3Byb2ZpbGUtcG9y/dHJhaXQtZXllcy1j/bG9zZWQuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPU4zcXR2/QUctTWJtaG9qTWx5/SXprd0ZqdS0xc1U5/aHJtNURvVG9zVm95/cVE9" alt="teacher-img" class="teacher-img">
+                    <img src="" alt="teacher-img" class="teacher-img">
                     
                         <ul class="content">
                             <li class="name">Full Name:  <small class="teacherName">Cli cabdi nuur</small></li>
                             <li class="email">Email :  <small class="teacherEmail">Cli@gmail.com</small></li>
-                            <li class="name">Password: <small class="teacherPassword">123456</small></li>
+                            <li class="name teacherPassword"></li>
                             <li class="name">Class:  <small class="teacherClass">F41</small></li>
-                            <li class="name">Phone number:  <small class="teacherPhone">0929471030</small></li>
+                            <li class="name">Phone:  <small class="teacherPhone">0929471030</small></li>
+                            <button class=" edit-T" >Edit your Data</button>
                         </ul>
-                        <button class=" edit-T" >Edit your Data</button>
                     
                   </div>
+                 </div>
+
             </section>
 
             <section class="my_class">
               <div class="studentData">
                 <div class="top_table">
                     <span class="table_name">Name</span>
-                    <span class="table_ID">Student ID</span>
                     <span class="table_Email">Email adress</span>
                     <span class="table_Class">Class</span>
                     <span class="TABLE_Gender">Gender</span>
+                    <span class="TABLE_Gender">Actions</span>
                     
                 </div>
-                <div class="student_data_Parent">
+                <div class="student_data_Parent" >
 
-                    <div class="student_data">
+                    <!-- <div class="student_data">
                         <span class="table_name"><img src="https://media.istockphoto.com/id/1815745180/photo/portrait-of-beautiful-multiracial-tourist-woman-during-sunset-on-top-of-hill.webp?a=1&b=1&s=612x612&w=0&k=20&c=SDt3m8BFs88Olzf_Ak_yA42qHmsPVp_oPg1s_Ad7GdY=" alt="" class="student_img"> <span class="name">cli cabdi</span></span>
                         <span class="table_ID">708397</span>
                         <span class="table_Email">cali@gmail.com</span>
                         <span class="table_Class">jss 3</span>
                         <span class="TABLE_Gender">mail</span>
-                        
-                    </div>
-                    <div class="student_data">
-                        <span class="table_name"><img src="https://media.istockphoto.com/id/1815745180/photo/portrait-of-beautiful-multiracial-tourist-woman-during-sunset-on-top-of-hill.webp?a=1&b=1&s=612x612&w=0&k=20&c=SDt3m8BFs88Olzf_Ak_yA42qHmsPVp_oPg1s_Ad7GdY=" alt="" class="student_img"> <span class="name">cli cabdi</span></span>
-                        <span class="table_ID">708397</span>
-                        <span class="table_Email">cali@gmail.com</span>
-                        <span class="table_Class">jss 3</span>
-                        <span class="TABLE_Gender">mail</span>
-                        
-                    </div>
+                        <span style="display: flex;align-items: center;gap: 10px;"><button class="edit">Edit</button><button class="delete">Delete</button></span>
+                    </div> -->
+                
                 </div>
                
               </div>

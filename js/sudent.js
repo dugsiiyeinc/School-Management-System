@@ -49,22 +49,17 @@ my_DataC.addEventListener("click",()=>{
     Student_repots.classList.remove('left_side_active')
     Student_repotsM.classList.remove('left_side_active')
      my_DataC.classList.add('left_side_active')
-
-     
-    
      my_DataM.classList.add('left_side_active')
 })
 
 Student_repots.addEventListener("click",()=>{
     StudentData.style.display='none'
- 
     repots.style.display='block'
 
     Student_repots.classList.add('left_side_active')
     Student_repotsM.classList.add('left_side_active')
     
     my_DataC.classList.remove('left_side_active')
-   
     my_DataM.classList.remove('left_side_active')
 
 
@@ -79,7 +74,7 @@ my_DataM.addEventListener("click",()=>{
 
     
      my_DataM.classList.add('left_side_active')
-     my_DataM.classList.add('left_side_active')
+     my_DataC.classList.add('left_side_active')
 
   
      Student_repots.classList.remove('left_side_active')
@@ -95,10 +90,10 @@ Student_repotsM.addEventListener("click",()=>{
     repots.style.display='block'
   
     Student_repots.classList.add('left_side_active')
-
     Student_repotsM.classList.add('left_side_active')
+
     my_DataM.classList.remove('left_side_active')
-    my_DataM.classList.remove('left_side_active')
+    my_DataC.classList.remove('left_side_active')
   
 
 })
@@ -111,7 +106,9 @@ lagout_btn.addEventListener('click', ()=>{
 })
 
 
-
+// document.querySelector('#slider').addEventListener('change',(e)=>{
+//     console.log(e.target.value)
+// })
 
 // let want =arrey.filter(curent=> curent.number>=10)
 // console.log(want)
