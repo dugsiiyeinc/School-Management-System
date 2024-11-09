@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teacher-dashbord</title>
-    <link rel="stylesheet" href="../css/teacher.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
+    <link rel="stylesheet" href="../css/teacher.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
     <div class="container">
+<<<<<<< HEAD
+      <div class="old_edit_model">
+        <div class="edit_model">
+          <i
+            class="fa-solid fa-x fa-xx"
+            style="
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              font-size: 1.3rem;
+              font-weight: 900;
+              cursor: pointer;
+            "
+          ></i>
+          <!-- <img src="" alt="" id="model_img" style="border-radius: 10px;">
+                  -->
+          <div class="model_input">
+            <img
+              src=" "
+              class="img Techer_img"
+              style="border-radius: 10px; width: 150px; height: 150px"
+              id="img"
+            />
+            <input type="file" id="designation" placeholder="img" />
+          </div>
+          <div class="label">
+            <label for="name">Full Name</label>
+            <input type="text" id="model_name" for="name" />
+          </div>
+          <div
+            style="display: flex; gap: 10px; align-items: center; width: 100%"
+            class="selectors"
+          >
+            <div class="label">
+              <label for="Email">Email</label>
+              <input type="email" id="model_email" for="Email" />
+=======
         <!-- mobile -->
          <div class="humberger">
             <i class="fa-solid fa-bars"></i>
@@ -19,119 +62,275 @@
                 <p id="currentTeacher" class="current_teacher">Teacher: </p>
                 <img src="../img/Ellipse 6.png" alt="" id="teach_img" style="border-radius: 50%;">
                 <p id="currentTeacher" class="current_teacher"> </p>
+>>>>>>> a7972bf6cf20192db0d3abf113680283bc7a9f16
             </div>
-            
-            <ul class="actions">
-                <li class="my-DataM"><i class="fa-solid fa-database"></i> My Data</li>
-                <li class="my-ClassM"><i class="fa-solid fa-landmark"></i> My cLass</li>
-                <li class="add-N-StudentM"><i class="fa-regular fa-square-plus"></i>Add new studhent</li>
-                <li class="Student_repotsM"><i class="fa-regular fa-flag"></i>Students repots</li>
+            <select id="mode_grade">
+              <option selected>Select class</option>
+              <option>Grade 1</option>
+              <option>Grade 2</option>
+              <option>Grade 3</option>
+              <option>Grade 4</option>
+              <option>Grade 5</option>
+              <option>Grade 6</option>
+              <option>Grade 7</option>
+              <option>Grade 8</option>
+              <option>Grade 9</option>
+              <option>Grade 10</option>
+              <option>Grade 11</option>
+              <option>Grade 12</option>
+            </select>
+            <select id="model_gender">
+              <option value="male">male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="label">
+            <label for="password">password</label>
+            <input type="text" id="model_password" for="password" />
+          </div>
 
-             </ul>
-             <div class="Teacher_Sittings Sittings_actionM">
-                <p><i class="fa-solid fa-gear"></i>  sittings</p>
-             </div>
+          <div id="student_progress_container">
+            <!-- <span
+              >Student progress is
+              <input
+                type="text"
+                id="student_progress"
+                style="
+                  border: none;
+                  background: #ddd;
+                  font-size: 1rem;
+                  width: 100px;
+                "
+            /></span> -->
+          </div>
+
+          <button
+            class="save"
+            style="
+              padding: 10px;
+              background: #519cda;
+              color: #fff;
+              font-size: 1rem;
+              border: none;
+            "
+          >
+            save
+          </button>
+        </div>
+      </div>
+      <div class="old_reports_model">
+        <div class="model_repots">
+          <i
+            class="fa-solid fa-x fa-xx"
+            style="
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              font-size: 1.3rem;
+              font-weight: 900;
+              cursor: pointer;
+            "
+          ></i>
+          <!-- <img src="" alt="" id="model_img" style="border-radius: 10px;">
+                  -->
+          <div class="model_input" >
+           <div style="height: 100%;">
+           <div style="display: flex; gap: 2rem;">
+            <img
+            src=" "
+            class="img Techer_img"
+            style="border-radius: 10px; width: 150px; height: 150px"
+            id="img_repot" />
+           <div style="display: flex;flex-direction: column; gap: 10px;">
+            <span class="type_of_repot" style="color: rgb(27, 153, 196); font-weight: 6000; "></span>
+            <span class="class" style="color: #444; font-weight: 6000; "></span>
+            <span class="name_r" style="color: #444; font-weight: 6000; "></span>
+
+           </div>
+           </div>
+         
+            <br>
+          <p class="report_text"  style="margin-bottom: 80% !important;"></p>
+
+
+          
+          
+        </div>
+           </div>
+          
+          </div>
+
+         
+        </div>
+      
+      <!-- mobile -->
+      <div class="humberger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="mobile">
+        <div class="logo">
+          <img
+            src="../img/Ellipse 6.png"
+            alt=""
+            id="teach_img"
+            style="border-radius: 50%"
+          />
+          <p id="currentTeacher" class="current_teacher"></p>
         </div>
 
-        <!-- left side of dashbord -->
-        <div class="left_side">
-            <div class="logo">
-                <img src="../img/Ellipse 6.png" alt="" id="teach_img" style="border-radius: 50%; height: 100px; width: 100px;">
-                <p class="curent_teacher">
-                    Teacher: <span  class="curent_teacherR"></span>
-                </p>
-            </div>
-            <ul class="actions">
-                <li class="my-Data left_side_active menu"><i class="fa-solid fa-database"></i> My Data</li>
-                <li class="my-Class menu"><i class="fa-solid fa-landmark"></i> My cLass</li>
-                <li class="add-N-Student menu"><i class="fa-regular fa-square-plus"></i>Add new studhent</li>
-                <li class="Student_repots"><i class="fa-regular fa-flag"></i>Students repots</li>
-             </ul>
-             <div class="Sittings_action">
-                <p><i class="fa-solid fa-gear"></i>  sittings</p>
-             </div>
+        <ul class="actions">
+          <li class="my-DataM"><i class="fa-solid fa-database"></i> My Data</li>
+          <li class="my-ClassM">
+            <i class="fa-solid fa-landmark"></i> My cLass
+          </li>
+          <li class="add-N-StudentM">
+            <i class="fa-regular fa-square-plus"></i>Add new studhent
+          </li>
+          <li class="Student_repotsM">
+            <i class="fa-regular fa-flag"></i>Students repots
+          </li>
+        </ul>
+        <div class="Teacher_Sittings Sittings_actionM">
+          <p><i class="fa-solid fa-gear"></i> sittings</p>
         </div>
-       <!-- rihgt side of dashbord -->
-        <div class="right_side">
-            <header class="header">
-                <div class="top">
-                    <button class="add_student add_student_top">Add Student</button>
-                        <div class="lagput_notivication">
-                            <i class="fa-regular fa-bell"></i>
-                            <div class="color"></div>
-                            <button class="lagout_btn">Lagout</button>
-                        </div>
-                </div>
-                <div class="bottom_header">
-                      <div class="searching">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" class="studentSearching" placeholder="Search student name">
-                      </div>
-                </div>
-            </header>
-            <!-- section are here -->
+      </div>
 
-            <section class="teacherData">
-                 <div class="container2">
-                     <h1 style="text-align: center;">Welcome to your dashboard, Udemy school</h1>
-                     <span>You have access to your dashboard</span>
-                     <div class="mm">
-                        <ul>
-                        <li>
-                            <div class="top">
-                                <i class="fa-solid fa-user-shield"></i>
-                                <h2>See Your Data</h2>
-                            </div>
-                            <p>you can see you r data and access Lorem ipsum dolor sit amet consectetur Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio in ullam, hic nihil debitis error quos aliquam ea sapiente cumque.</p>
-                        </li>
-                        <li>
-                            <div class="top">
-                                <i class="fa-regular fa-square-plus"></i>
-                                <h2>Add Student If You Have Access</h2>
-                            </div>
-                            <p>you can see you r data class and access Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero rem tempore officiis fugit iusto eveniet?</p>
-                        </li>
-                        <li>
-                            <div class="top">
-                                <i class="fa-regular fa-eye"></i>
-                                <h2>Send Repor and See Student Reports</h2>
-                            </div>
-                            <p>you can see you r data and access Lorem ipsum dolor sit amet consectetur Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus reiciendis fugiat quibusdam nulla facilis.</p>
-                        </li>
-                     </ul></div>
+      <!-- left side of dashbord -->
+      <div class="left_side">
+        <div class="logo">
+          <img
+            src="../img/Ellipse 6.png"
+            alt=""
+            id="teach_img"
+            style="border-radius: 50%; height: 100px; width: 100px"
+          />
+          <p class="curent_teacher">
+            Teacher: <span class="curent_teacherR"></span>
+          </p>
+        </div>
+        <ul class="actions">
+          <li class="my-Data left_side_active menu">
+            <i class="fa-solid fa-database"></i> My Data
+          </li>
+          <li class="my-Class menu">
+            <i class="fa-solid fa-landmark"></i> My cLass
+          </li>
+          <li class="add-N-Student menu">
+            <i class="fa-regular fa-square-plus"></i>Add new studhent
+          </li>
+          <li class="Student_repots">
+            <i class="fa-regular fa-flag"></i>Students repots
+          </li>
+        </ul>
+        <div class="Sittings_action">
+          <p><i class="fa-solid fa-gear"></i> sittings</p>
+        </div>
+      </div>
+      <!-- rihgt side of dashbord -->
+      <div class="right_side">
+        <header class="header">
+          <div class="top">
+            <button class="add_student add_student_top">Add Student</button>
+            <div class="lagput_notivication">
+              <i class="fa-regular fa-bell"></i>
+              <div class="color"></div>
+              <button class="lagout_btn">Lagout</button>
+            </div>
+          </div>
+          <div class="bottom_header">
+            <div class="searching">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="search"
+                class="studentSearching"
+                placeholder="Search student name"
+              />
+            </div>
+          </div>
+        </header>
+        <!-- section are here -->
 
-                     
-
-                  <div class="maydata">
-                    <img src="" alt="teacher-img" class="teacher-img">
-                    
-                        <ul class="content">
-                            <li class="name">Full Name:  <small class="teacherName">Cli cabdi nuur</small></li>
-                            <li class="email">Email :  <small class="teacherEmail">Cli@gmail.com</small></li>
-                            <li class="name teacherPassword"></li>
-                            <li class="name">Class:  <small class="teacherClass">F41</small></li>
-                            <li class="name">Phone:  <small class="teacherPhone">0929471030</small></li>
-                            <button class=" edit-T" >Edit your Data</button>
-                        </ul>
-                    
+        <section class="teacherData">
+          <div class="container2">
+            <h1 style="text-align: center">
+              Welcome to your dashboard, Udemy school
+            </h1>
+            <span>You have access to your dashboard</span>
+            <div class="mm">
+              <ul>
+                <li>
+                  <div class="top">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <h2>See Your Data</h2>
                   </div>
-                 </div>
+                  <p>
+                    you can see you r data and access Lorem ipsum dolor sit amet
+                    consectetur Lorem ipsum, dolor sit amet consectetur
+                    adipisicing elit. Odio in ullam, hic nihil debitis error
+                    quos aliquam ea sapiente cumque.
+                  </p>
+                </li>
+                <li>
+                  <div class="top">
+                    <i class="fa-regular fa-square-plus"></i>
+                    <h2>Add Student If You Have Access</h2>
+                  </div>
+                  <p>
+                    you can see you r data class and access Lorem ipsum dolor
+                    sit amet consectetur Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit. Vero rem tempore officiis fugit iusto
+                    eveniet?
+                  </p>
+                </li>
+                <li>
+                  <div class="top">
+                    <i class="fa-regular fa-eye"></i>
+                    <h2>Send Repor and See Student Reports</h2>
+                  </div>
+                  <p>
+                    you can see you r data and access Lorem ipsum dolor sit amet
+                    consectetur Lorem ipsum, dolor sit amet consectetur
+                    adipisicing elit. Temporibus reiciendis fugiat quibusdam
+                    nulla facilis.
+                  </p>
+                </li>
+              </ul>
+            </div>
 
-            </section>
+            <div class="maydata">
+              <img src="" alt="teacher-img" class="teacher-img" />
 
-            <section class="my_class">
-              <div class="studentData">
-                <div class="top_table">
-                    <span class="table_name">Name</span>
-                    <span class="table_Email">Email adress</span>
-                    <span class="table_Class">Class</span>
-                    <span class="TABLE_Gender">Gender</span>
-                    <span class="TABLE_Gender">Actions</span>
-                    
-                </div>
-                <div class="student_data_Parent" >
+              <ul class="content">
+                <li class="name">
+                  Full Name: <small class="teacherName">Cli cabdi nuur</small>
+                </li>
+                <li class="email">
+                  Email : <small class="teacherEmail">Cli@gmail.com</small>
+                </li>
+                <li class="name teacherPassword"></li>
+                <li class="name">
+                  Class: <small class="teacherClass">F41</small>
+                </li>
+                <li class="name">
+                  Phone: <small class="teacherPhone">0929471030</small>
+                </li>
+                <button class="edit-T">Edit your Data</button>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-                    <!-- <div class="student_data">
+        <section class="my_class">
+          <div class="studentData">
+            <div class="top_table">
+              <span class="table_name">Name</span>
+              <span class="table_Email">Email adress</span>
+              <span class="table_Class">Class</span>
+              <span class="TABLE_Gender">Gender</span>
+              <span class="TABLE_Gender">Actions</span>
+            </div>
+            <div class="student_data_Parent">
+              <!-- <div class="student_data">
                         <span class="table_name"><img src="https://media.istockphoto.com/id/1815745180/photo/portrait-of-beautiful-multiracial-tourist-woman-during-sunset-on-top-of-hill.webp?a=1&b=1&s=612x612&w=0&k=20&c=SDt3m8BFs88Olzf_Ak_yA42qHmsPVp_oPg1s_Ad7GdY=" alt="" class="student_img"> <span class="name">cli cabdi</span></span>
                         <span class="table_ID">708397</span>
                         <span class="table_Email">cali@gmail.com</span>
@@ -139,102 +338,115 @@
                         <span class="TABLE_Gender">mail</span>
                         <span style="display: flex;align-items: center;gap: 10px;"><button class="edit">Edit</button><button class="delete">Delete</button></span>
                     </div> -->
+            </div>
+          </div>
+        </section>
+
+        <section class="Add_new_student">
+          <h1 style="color: #444">Add Students</h1>
+          <span class="manually_imprt"
+            ><span>Manually</span> <span>Import CSV</span></span
+          >
+          <form class="Add_student_form">
+            <div class="model_input">
+              <img
+                src=" "
+                class="img Techer_img"
+                style="border-radius: 10px; width: 150px; height: 150px"
+                id="img"
+              />
+              <input type="file" id="designation" placeholder="img" />
+            </div>
+            <div class="top">
+              <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" class="name" />
+              </div>
+              <select class="select_class">
+                <option selected>Select class</option>
+                <option>Grade 1</option>
+                <option>Grade 2</option>
+                <option>Grade 3</option>
+                <option>Grade 4</option>
+                <option>Grade 5</option>
+                <option>Grade 6</option>
+                <option>Grade 7</option>
+                <option>Grade 8</option>
+                <option>Grade 9</option>
+                <option>Grade 10</option>
+                <option>Grade 11</option>
+                <option>Grade 12</option>
+              </select>
+              <select class="select_Gender">
+                <option value="Mail">Male</option>
+                <option value="Fmail">Female</option>
+              </select>
+            </div>
+
+            <div class="middel">
+              <div class="lebels">
+                <label for="Email">Email address</label>
+                <input type="text" name="Email" class="Email" />
+              </div>
+              <div class="lebels">
+                <label for="phone">Name</label>
+                <input type="text" name="phone" class="phone" />
+              </div>
+            </div>
+
+            <div class="lebels">
+              <label for="Password">Password</label>
+              <input type="Password" name="Password" class="Password" />
+            </div>
+            <button class="add_student_btn">Add Student</button>
+          </form>
+        </section>
+
+        <section class="sittings">sittings</section>
+        <section class="repots">
+          <div class="top_repots">
+            <h1>See here your repots and also send new repot here</h1>
+            <div class="action_repost">
+              <button class="Student_Repots_btn">Student-Repots</button>
+              <span class="font">/</span>
+              <button class="Send_Repots_btn">Send</button>
+            </div>
+          </div>
+          <div class="botom_repots">
+            <section class="Student_Repots_section">
+              <div class="repost_container">
+                <!-- <div class="colom">
+                  <img
+                    src=""
+                    alt="img"
+                    height="50px"
+                    width="50px"
+                  />
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Officia nobis sunt fugit voluptatibus dignissimos Lorem
+                    ipsum dolor sit amet.
+                  </p>
+                </div> -->
                 
-                </div>
                
               </div>
             </section>
-
-            <section class="Add_new_student">
-                <h1 style="color: #444;">Add Students</h1>
-                <span class="manually_imprt"><span>Manually</span> <span>Import CSV</span></span>
-                <form class="Add_student_form">
-                    <div class="top">
-                        <div>
-                            <label for="name">Name</label>
-                            <input type="text" name="name" class="name"> 
-                        </div>   
-                        <select class="select_class">
-                            <option value="fom1">fom1</option>
-                            <option value="fom1">fom2</option>
-                            <option value="fom1">fom3</option>
-                            <option value="fom1">fom4</option>
-                        </select>
-                        <select class="select_Gender">
-                            <option value="Mail">Male</option>
-                            <option value="Fmail">Female</option>
-                        </select>
-                    </div>
-                   
-                    <div class="middel">
-                        <div class="lebels">
-                            <label for="Email">Email address</label>
-                            <input type="text" name="Email" class="Email"> 
-                        </div> 
-                        <div class="lebels">
-                            <label for="phone">Name</label>
-                            <input type="text" name="phone" class="phone"> 
-                        </div> 
-                    </div>
-                    
-                    <div class="lebels">
-                        <label for="Password">Password</label>
-                        <input type="Password" name="Password" class="Password"> 
-                    </div> 
-                    <button class="add_student_btn">Add Student</button>
-                </form>
+            <section class="Send_Repots_section">
+              <p>Send here your repot & it will be seen by only admin</p>
+              <form class="send_repot">
+                <textarea
+                  id="inpu_repot"
+                  placeholder="Text here you repot!"
+                ></textarea>
+                <button>send</button>
+              </form>
             </section>
-
-            <section class="sittings">
-                sittings
-             </section>
-             <section class="repots">
-               <div class="top_repots">
-                 <h1>See here your repots and also send new repot here</h1>
-                <div class="action_repost">
-                    <button class="Student_Repots_btn">Student-Repots</button>
-                    <span class="font">/</span>
-                    <button class="Send_Repots_btn">Send</button>
-                </div>
-            </div>
-            <div class="botom_repots">
-                <section class="Student_Repots_section">
-                  <div class="repost_container">
-                    <div class="colom">
-                        <img src="https://plus.unsplash.com/premium_photo-1675129522693-bd62ffe5e015?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="img" height="50px" width="50px">
-                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nobis sunt fugit voluptatibus dignissimos Lorem ipsum dolor sit amet. </P>
-                    </div>
-                    <div class="colom">
-                        <img src="https://plus.unsplash.com/premium_photo-1675129522693-bd62ffe5e015?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="img" height="50px" width="50px">
-                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nobis sunt fugit voluptatibus dignissimos Lorem ipsum dolor sit amet. </P>
-                    </div>
-                    <div class="colom">
-                        <img src="https://plus.unsplash.com/premium_photo-1675129522693-bd62ffe5e015?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="img" height="50px" width="50px">
-                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nobis sunt fugit voluptatibus dignissimos Lorem ipsum dolor sit amet. </P>
-                    </div>
-                    <div class="colom">
-                        <img src="https://plus.unsplash.com/premium_photo-1675129522693-bd62ffe5e015?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="img" height="50px" width="50px">
-                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nobis sunt fugit voluptatibus dignissimos Lorem ipsum dolor sit amet. </P>
-                    </div>
-
-                  </div>
-
-                </section>
-                <section class="Send_Repots_section">
-                    <p>Send here your repot & it will be seen by only admin</p>
-                    <form class="send_repot">
-                        <textarea id="inpu_repot" placeholder="Text here you repot!"></textarea>
-                        <button>send</button>
-                    </form>
-
-                </section>
-            </div>
-             </section>
-
-
-        </div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <script src="../js/teacher.js"></script>
-</body>
+  </body>
 </html>

@@ -14,7 +14,95 @@ body{
 .container{
     display: grid;
     grid-template-columns: repeat(6,1fr);
+    position: relative;
 
+}
+
+.edit_model, .model_repots{
+    display: flex;
+    flex-direction: column;
+    padding:80px 20px;
+    /* align-items: self-start; */
+    gap: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: min(100%,900px);
+    margin: 70px auto;
+    background: white;
+    height: 800px;
+    position: relative;
+    
+}
+.model_repots{
+    width: min(100%,600px);
+    height: 700px;
+
+}
+/* .model_input{
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+   justify-content:center !important;
+   align-items: center;
+    width: 100%;
+} */
+.old_edit_model,.old_reports_model{
+    position: absolute;
+   width: 100%;
+   height:100vh !important;
+   background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+   z-index: 50;
+}
+.old_edit_model, .old_reports_model{
+    display: none;
+}
+/* .old_reports_model{
+    display: block;
+} */
+.fa-x{
+    padding: 20px ;
+}
+.fa-x:hover{
+    background: #ccc;
+    /* padding: 20px; */
+}
+.edit_model input, .edit_model select{
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.edit_model select{
+    margin-top: 20px;
+    margin-right: 3rem;
+    padding: 15px 25px;
+}
+.label{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+.label input, #model_email, .edit_model button{
+    width: min(100%, 400px);
+}
+.model_input{
+    width: 100%;
+    display: flex !important;
+    align-items: end;
+    gap: 20px;
+    flex-wrap: wrap
+}
+.model_input input{
+    border: none !important;
+}
+#model_name{
+    width: min(100%, 600px);
+     
 }
 .left_side_active{
     background: #519cda;
@@ -519,6 +607,7 @@ header .bottom_header{
     display: flex;
     flex-direction: column;
     /* gap: 20p; */
+    /* background:transparent; */
 }
 .colom{
     display: flex;
