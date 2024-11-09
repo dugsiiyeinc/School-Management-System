@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector('.reports').style.display='none'
   let admin_Data = JSON.parse(localStorage.getItem("admin"));
   let admin_img = document.querySelector(".admin_img");
   let admin_Name = document.querySelector(".admin_Name");
@@ -25,6 +26,7 @@ menuToggle.addEventListener("click", () => {
 });
 
 function setActiveMenuItem(id) {
+   document.querySelector('.reports').style.display='none'
   document
     .querySelectorAll(".menu-item a")
     .forEach((item) => item.classList.remove("active"));
@@ -58,6 +60,7 @@ document.querySelectorAll(".menu-item a").forEach((menuItem) => {
     toggleScreen(`${sectionId}-screen`);
     if (sectionId === "teachers") loadTeachers();
     if (sectionId === "students") loadStudents();
+   
   });
 });
 
@@ -97,13 +100,13 @@ document.getElementById("main-add").addEventListener("click", () => {
 
 document
   .getElementById("searchInput")
-  .addEventListener("input", searchTeachers);
+  // .addEventListener("input", searchTeachers);
 
-document.querySelector(".logout").addEventListener("click", function () {
+document.querySelectorAll(".logout").forEach(btn=>btn.addEventListener("click", function () {
   // console.log('logged out');
-  window.location.href = "register.html";
+  window.location.href = "login.html";
   // window.location.href='student.html'
-});
+}));
 document.querySelector(".bax").addEventListener("click", function () {
   // console.log('logged out');
   window.location.href = "register.html";
@@ -455,3 +458,77 @@ window.onload = function () {
   } else {
   }
 };
+
+document.querySelector('.report_section').addEventListener('click',()=>{
+  document.querySelector('.reports').style.display='block'
+  loadingReports()
+
+})
+
+
+
+let loadingReports=()=>{
+  let repots=JSON.parse(localStorage.getItem('reports'))
+
+
+  let repost_container=document.querySelector('.repost_container')
+  repost_container.innerHTML=''
+  repots.forEach((repot,index)=>{
+    let colom=document.createElement('div')
+    colom.classList.add('colom')
+    colom.innerHTML=`
+                 <img      
+                   src="${repot.img}"
+                    alt="img"
+                    height="50px"
+                    width="50px"
+                    class='repot_img'
+                  />
+                  <p>
+                   ${repot.text}
+                  </p>
+    `
+
+    if(repot.view.admin==false){
+
+      colom.style.background='#8fdaf841'
+    }else if(repot.view.teacher===true){
+      colom.style.background='transparent'
+
+    }
+    repost_container.appendChild(colom)
+    colom.addEventListener('click',()=> reports_model(repot,index))
+  })
+ 
+}
+
+let reports_model=(col,index)=>{
+  console.log(col)
+   let model = document.querySelector(".old_reports_model");
+   let model_repots = document.querySelector(".model_repots");
+   let img_repot = document.querySelector("#img_repot");
+   let report_text = document.querySelector(".report_text");
+   let type_of_repot = document.querySelector(".type_of_repot");
+   let name_r = document.querySelector(".name_r");
+   let classs = document.querySelector(".class");
+   model.style.display='block'
+
+       img_repot.src=col.img;
+       report_text.innerHTML=col.text;
+       type_of_repot.innerHTML=col.type
+       classs.innerHTML=col.class
+       name_r.innerHTML=col.name
+
+
+
+   model_repots.querySelector(".fa-xx").addEventListener("click", () => {
+     model.style.display = "none";
+
+ let repots=JSON.parse(localStorage.getItem('reports'))
+   let report=repots.find(report=>report.text == col.text)
+   report.view.admin=true
+   localStorage.setItem('reports',JSON.stringify(repots))
+     loadingReports()
+   });
+
+ }

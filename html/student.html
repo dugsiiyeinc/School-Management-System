@@ -21,7 +21,7 @@
       </div>
       <div class="mobile">
         <div class="logo">
-          <img src="../img/Ellipse 6.png" alt="">
+          <img src="../img/Ellipse 6.png" alt="" id="stu_img" style="width: 100px;height: 100px; border-radius: 50%;"/>
           <p id="currentStudent" class="currentStudent"> </p>
        </div>
       
@@ -36,9 +36,9 @@
       <!-- left side of dashbord -->
       <div class="left_side">
         <div class="logo">
-          <img src="../img/Ellipse 6.png" alt="" />
+          <img src="../img/Ellipse 6.png" alt="" id="stu_img"  style="width: 100px;height: 100px; border-radius: 50%;" />
           <p class="curent_teacher">
-            Student : <span class="curent_teacherR"></span>
+            Student : <span class="currentStudent"></span>
           </p>
         </div>
         <ul class="actions">
@@ -77,7 +77,7 @@
             <img
               src="https://imgs.search.brave.com/gvjaP-SuocK28zHutcrrrJNuVtkYygalGI_yUwCPnnI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTc0/MDAyNjc0L3Bob3Rv/L3Byb2ZpbGUtcG9y/dHJhaXQtZXllcy1j/bG9zZWQuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPU4zcXR2/QUctTWJtaG9qTWx5/SXprd0ZqdS0xc1U5/aHJtNURvVG9zVm95/cVE9"
               alt="teacher-img"
-              class="teacher-img"
+              class="teacher-img teacher_D_img"
             />
 
             <ul class="content">
@@ -93,27 +93,25 @@
               <li class="name">
                 Class: <small class="studentClass">F41</small>
               </li>
-              <li class="name">
-                Phone number: <small class="studentPhone">0929471030</small>
-              </li>
+             
               <li class="name">
                 Your class admin:
                 <small class="studentAdminTeacher">Cali</small>
               </li>
             </ul>
           </div>
-          <div class="progres_container bbb">
+          <!-- <div class="progres_container bbb">
             <p>Your Progress Off Class</p>
             <div class="progress">
               <div class="progress_bar"></div>
             </div>
-          </div>
-          <div class="progres_container">
+          </div> -->
+          <!-- <div class="progres_container">
             <p>Your Progress Off School</p>
             <div class="progress">
               <div class="progress_bar_school"></div>
             </div>
-          </div>
+          </div> -->
 
           <!-- <input type="range" id="slider" min="0" max="100" value="50"> -->
         </section>
@@ -122,7 +120,7 @@
           <h2>Send a report here</h2>
           <form class="student_send-repot">
             <textarea id="textArea" placeholder="text here your report"></textarea>
-            <button>send</button>
+            <button type="submit">send</button>
           </form>
 
         </section>

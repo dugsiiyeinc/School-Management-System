@@ -60,12 +60,58 @@
                     <input type="checkbox" id="model_Access" for="Access" value="off">
                    </div>
                   <div id="student_progress_container">
-                    <span>Student progress is <input type="text" id="student_progress" style="border: none; background: #ddd; font-size: 1rem; width: 100px;"></span>
+                    <!-- <span>Student progress is <input type="text" id="student_progress" style="border: none; background: #ddd; font-size: 1rem; width: 100px;"></span> -->
                   </div>
                 
                 <button class="save">save</button>
             </div>
         </div>
+
+
+        <div class="old_reports_model">
+            <div class="model_repots">
+              <i
+                class="fa-solid fa-x fa-xx"
+                style="
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  font-size: 1.3rem;
+                  font-weight: 900;
+                  cursor: pointer;
+                "
+              ></i>
+              <!-- <img src="" alt="" id="model_img" style="border-radius: 10px;">
+                      -->
+              <div class="model_input" >
+               <div style="height: 100%;">
+               <div style="display: flex; gap: 2rem;">
+                <img
+                src=" "
+                class="img Techer_img"
+                style="border-radius: 10px; width: 150px; height: 150px"
+                id="img_repot" />
+               <div style="display: flex;flex-direction: column; gap: 10px;">
+                <span class="type_of_repot" style="color: rgb(27, 153, 196); font-weight: 6000; "></span>
+                <span class="class" style="color: #444; font-weight: 6000; "></span>
+                <span class="name_r" style="color: #444; font-weight: 6000; "></span>
+    
+               </div>
+               </div>
+             
+                <br>
+              <p class="report_text"  style="margin-bottom: 80% !important;"></p>
+    
+    
+              
+              
+            </div>
+               </div>
+              
+              </div>
+    
+             
+            </div>
         <!-- mobile menu -->
         <div class="menu-toggle">
             <i id="bar-btn" class="fas fa-bars"></i>
@@ -91,7 +137,7 @@
                     <a href="#" onclick="setActiveMenuItem('students')"><i class="fa-solid fa-graduation-cap"></i>
                         Students / Classes</a>
                 </div>
-                <div class="menu-item" id="billing">
+                <div class="menu-item report_section" id="billing" >
                     <a href="#" onclick="setActiveMenuItem('billing')"><i class="fa-solid fa-credit-card"></i>
                         reports</a>
                 </div>
@@ -415,11 +461,33 @@
 
                 </div>
             </table>
+
+
             
         </div>
+        <section class="reports" style="display: none; padding: 4rem 0; display: flex; flex-direction: column; gap: 2rem;">
+            <h1 style="margin: 2rem 0;">See All repots of teahers and students both</h1>
+            <div class="repost_container" style="width: min(100%,800px);">
+                <!-- <div class="colom">
+                  <img
+                    src=""
+                    alt="img"
+                    height="50px"
+                    width="50px"
+                  />
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Officia nobis sunt fugit voluptatibus dignissimos Lorem
+                    ipsum dolor sit amet.
+                  </p>
+                </div> -->
+                
+             
+              </div>
+        </section>
         </div>
 
-
+          
     </div>
 
     <script src="../js/admin.js"></script>
