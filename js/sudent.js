@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
   const stu_img = document.querySelectorAll("#stu_img");
   const currentStudent = document.querySelectorAll(".currentStudent");
@@ -5,6 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.getItem("current_user_student")
   );
   const students = JSON.parse(localStorage.getItem("students"));
+=======
+document.addEventListener('DOMContentLoaded', () => {
+    const currentStudent = document.getElementById('currentStudent');
+    const currentStudentUser = JSON.parse(localStorage.getItem('current_user_student'));
+>>>>>>> a7972bf6cf20192db0d3abf113680283bc7a9f16
 
   if (currentStudentUser && currentStudentUser.type === "student") {
     // currentStudent.innerHTML = currentStudentUser.name;
