@@ -135,7 +135,7 @@
 
                 <div class="menu-item" id="students">
                     <a href="#" onclick="setActiveMenuItem('students')"><i class="fa-solid fa-graduation-cap"></i>
-                        Students / Classes</a>
+                        Students </a>
                 </div>
                 <div class="menu-item report_section" id="billing" >
                     <a href="#" onclick="setActiveMenuItem('billing')"><i class="fa-solid fa-credit-card"></i>
@@ -277,7 +277,7 @@
                             <label for="gender">Gender</label>
                             <select id="gender">
                                 <option>Select gender</option>
-                                <option>Male</option>
+                                <option>male</option>
                                 <option>Female</option>
                             </select>
                         </div>
@@ -326,10 +326,10 @@
             
                     <div class="trr">
                         <div class="space">Name</div>
-                        <div>Subject</div>
-                        <div>Class</div>
-                        <div>Email address</div>
-                        <div>Gender</div>
+                        <div class='responsive'>Subject</div>
+                        <div >Class</div>
+                        <div class='responsive'>Email address</div>
+                        <div class='responsive'>Gender</div>
                         <div>Actions</div>
                     </div>
                 <!-- <tbody id="teacherList">
@@ -378,7 +378,7 @@
 
             <!-- Form for adding students -->
             <div class="form-container" id="studentFormContainer" style="display: none;">
-                <div style="display: flex; justify-content: space-between; align-items:center;">
+                <div style="display: flex; justify-content: space-between; align-items:center; flex-wrap: wrap;">
                     <h1>Add Students</h1>
                     <div class="designation-input">
                         <img src=" "class="Techer_img" width="100px" height="100px" style="border-radius: 50%; padding: 3px;">
@@ -416,7 +416,7 @@
                             <label for="studentGender">Gender:</label>
                             <select id="studentGender" required>
                                 <option value="">Select gender</option>
-                                <option value="Male">Male</option>
+                                <option value="male">male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
@@ -446,13 +446,13 @@
             </div>
             
             <!-- Table for displaying students -->
-            <table class="" id="studentTable" style="display: none;  display: flex; flex-direction: column;">
+            <div class="student-table" id="studentTable" style="  display: flex; flex-direction: column; display: none;">
                
-                    <div class="trr2">
+                    <div class="trr2" style="">
                         <div class="space">Name</div>
-                        <div>Email address</div>
+                        <div class='responsive'>Email address</div>
                         <div>Class</div>
-                        <div>Gender</div>
+                        <div class='responsive'>Gender</div>
                         <div>actions</div>
                     </div>
                
@@ -460,14 +460,16 @@
                 <div class="studentList" style="display: flex; flex-direction: column; gap: 40px !important;">
 
                 </div>
-            </table>
+            </div>
 
 
             
         </div>
+
+
         <section class="reports" style="display: none; padding: 4rem 0; display: flex; flex-direction: column; gap: 2rem;">
             <h1 style="margin: 2rem 0;">See All repots of teahers and students both</h1>
-            <div class="repost_container" style="width: min(100%,800px);">
+            <div class="repost_container" style="width: min(100%,900px);">
                 <!-- <div class="colom">
                   <img
                     src=""

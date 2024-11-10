@@ -88,6 +88,7 @@ document.querySelector(".teacher-form").addEventListener("submit", (event) => {
 
 document.querySelector(".student-form").addEventListener("submit", (event) => {
   event.preventDefault();
+ 
   addStudent();
 });
 document.getElementById("main-add").addEventListener("click", () => {
@@ -185,8 +186,9 @@ function addTeacher() {
     alert("Teacher added successfully!");
     document.querySelector(".teacher-form").reset();
     document.querySelector(".form-container").style.display = "none";
-    loadTeachers();
     document.querySelector(".teacher-table").style.display = "block";
+    loadTeachers();
+
   } else {
     alert(`A teacher with this email ${teacher.email} already exists.`);
   }
@@ -194,6 +196,9 @@ function addTeacher() {
 }
 
 function addStudent() {
+  let table=document.querySelector('#studentTable')
+  console.log(table)
+  // document.querySelector('.trr2').style.display='none'
   const name = document.getElementById("studentName").value.trim();
   const studentClass = document.getElementById("studentClass").value;
   const gender = document.getElementById("studentGender").value;
@@ -210,6 +215,8 @@ function addStudent() {
   if (saveToLocalStorage(student, "students")) {
     alert("Student added successfully!");
     document.querySelector(".student-form").reset();
+    // document.querySelector("#studentFormContainer").style.display = "none";
+    document.querySelector(".student-table").style.display = "block";
     document.querySelector("#studentFormContainer").style.display = "none";
     loadStudents();
   } else {
@@ -232,6 +239,7 @@ function saveToLocalStorage(item, type) {
 }
 
 function loadTeachers() {
+  document.querySelector(".teacher-table").style.display = "block";
   const teachers = JSON.parse(localStorage.getItem("teachers")) || [];
   const tableBody = document.getElementById("teacherList");
   tableBody.innerHTML = "";
@@ -250,10 +258,10 @@ function loadTeachers() {
     newRow.classList.add("div");
     newRow.innerHTML = `
             <div class='space' style="display: flex;align-items: center;gap: 5px;"><img src="${teacher.img}" class="imgg" style="width: 60px; height: 60px; border-radius: 50%;">${teacher.fullname}</div>
-            <div>${teacher.subject}</div>
+            <div class='responsive'>${teacher.subject}</div>
             <div>${teacher.className}</div>
-            <div>${teacher.email}</div>
-            <div>${teacher.gender}</div>
+            <div class='responsive'>${teacher.email}</div>
+            <div class='responsive'>${teacher.gender}</div>
             <div style='display: flex;align-items: center;gap: 10px;'><button class="delete-btn" data-index="${index}">Delete</button><button class="edit" data-index="${index}">Edit</button></div>
         `;
     // let img=document.querySelector('.imgg')
@@ -367,6 +375,7 @@ let model_Function = (index, type) => {
   });
 };
 function loadStudents() {
+  document.querySelector(".student-table").style.display = "block";
   const students = JSON.parse(localStorage.getItem("students")) || [];
   const tableBody = document.querySelector(".studentList");
   tableBody.innerHTML = "";
@@ -385,9 +394,9 @@ function loadStudents() {
     newRow.classList.add("div2");
     newRow.innerHTML = `
             <div class='space'style="display: flex;align-items: center;gap: 5px;"><img src="${student.img}" class="imgg" style="width: 60px; height: 60px; border-radius: 50%;">${student.name}</div>
-            <div>${student.email}</div>
+            <div class='responsive'>${student.email}</div>
             <div>${student.studentClass}</div>
-            <div>${student.gender}</div>
+            <div class='responsive'>${student.gender}</div>
             <div style='display: flex;align-items: center;gap: 10px;'><button class="delete-btn" data-index="${index}">Delete</button><button class="edit" data-index="${index}">Edit</button></div>
         `;
     tableBody.appendChild(newRow);
@@ -489,7 +498,7 @@ let loadingReports=()=>{
                   </p>
     `
 
-    if(repot.view.admin==false){
+    if(repot.view.admin===false){
 
       colom.style.background='#8fdaf841'
     }else if(repot.view.teacher===true){
@@ -521,13 +530,17 @@ let reports_model=(col,index)=>{
 
 
 
+
+       let repots=JSON.parse(localStorage.getItem('reports'))
+       let report=repots.find(report=>report.current_id == col.current_id)
+       console.log(report)
+       report.view.admin=true
+       localStorage.setItem('reports',JSON.stringify(repots))
+
+
    model_repots.querySelector(".fa-xx").addEventListener("click", () => {
      model.style.display = "none";
 
- let repots=JSON.parse(localStorage.getItem('reports'))
-   let report=repots.find(report=>report.text == col.text)
-   report.view.admin=true
-   localStorage.setItem('reports',JSON.stringify(repots))
      loadingReports()
    });
 

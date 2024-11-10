@@ -564,7 +564,7 @@ header {
     flex-wrap: wrap;
 }
 .trr2{
-    display: grid !important;
+    display: grid ;
     grid-template-columns: repeat(6,1fr);
    justify-content: space-between;
    align-items: center;
@@ -575,11 +575,15 @@ header {
    border-radius: 20px;
 }
 .div2{
+    margin: 10px 0;
    display: grid !important;
     grid-template-columns: repeat(6,1fr);
    justify-content: space-between;
    align-items: center;
    flex-wrap: wrap;
+}
+.div{
+    margin: 10px 0;
 }
 .space{
     grid-column: 1/span 2;
@@ -690,6 +694,12 @@ header {
      
 }
 @media screen and (max-width: 768px) {
+    .div2, .trr2, .div ,.trr{
+        grid-template-columns: repeat(4,1fr);
+    }
+    .responsive{
+        display: none;
+    }
     .selectors{
         flex-wrap: wrap;
     }
@@ -772,6 +782,7 @@ header {
         width: 100%;
         
      } 
+
      .trr,.div,.div2,.trr2{
         font-size: 12px !important;
         gap: 4px;

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
   const stu_img = document.querySelectorAll("#stu_img");
   const currentStudent = document.querySelectorAll(".currentStudent");
@@ -6,11 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.getItem("current_user_student")
   );
   const students = JSON.parse(localStorage.getItem("students"));
-=======
-document.addEventListener('DOMContentLoaded', () => {
-    const currentStudent = document.getElementById('currentStudent');
-    const currentStudentUser = JSON.parse(localStorage.getItem('current_user_student'));
->>>>>>> a7972bf6cf20192db0d3abf113680283bc7a9f16
 
   if (currentStudentUser && currentStudentUser.type === "student") {
     // currentStudent.innerHTML = currentStudentUser.name;
@@ -130,6 +124,12 @@ document.querySelector('.student_send-repot').addEventListener('submit',(e)=>{
     const currentStudentUser = JSON.parse(localStorage.getItem("current_user_student"))
      let student = students.find((student) => student.name == currentStudentUser.name);
     let textArea=document.querySelector('#textArea')
+
+    const dateNow = Date.now();
+    const randomNum = Math.floor(Math.random() * 1000); 
+    let current_id=dateNow-randomNum;
+
+     console.log(current_id)
   
     let data_Reports={
      type:'student',
@@ -140,12 +140,14 @@ document.querySelector('.student_send-repot').addEventListener('submit',(e)=>{
      view:{
         teacher:false,
         admin:false
-     }
+     },
+     current_id:current_id
     }
      console.log(data_Reports)
     let reports= JSON.parse(localStorage.getItem('reports')) || []
      reports.unshift(data_Reports)
 
     localStorage.setItem('reports',JSON.stringify(reports))
-    textArea.value=''
+    document.querySelector('.student_send-repot').reset()
+    alert('report sent successfuly')
 })

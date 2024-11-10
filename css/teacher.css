@@ -700,6 +700,13 @@ header .bottom_header{
     }
 }
 @media (max-width:900px){
+    .top_table, .student_data{
+        grid-template-columns: repeat(3,1fr);
+
+    }
+    .responsive{
+        display: none;
+    }
   .left_side{
     position: relative;
     display: none !important;

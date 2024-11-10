@@ -15,7 +15,6 @@
   </head>
   <body>
     <div class="container">
-<<<<<<< HEAD
       <div class="old_edit_model">
         <div class="edit_model">
           <i
@@ -51,18 +50,6 @@
             <div class="label">
               <label for="Email">Email</label>
               <input type="email" id="model_email" for="Email" />
-=======
-        <!-- mobile -->
-         <div class="humberger">
-            <i class="fa-solid fa-bars"></i>
-         </div>
-         <div class=" mobile ">
-            <div class="logo">
-                <img src="../img/Ellipse 6.png" alt="">
-                <p id="currentTeacher" class="current_teacher">Teacher: </p>
-                <img src="../img/Ellipse 6.png" alt="" id="teach_img" style="border-radius: 50%;">
-                <p id="currentTeacher" class="current_teacher"> </p>
->>>>>>> a7972bf6cf20192db0d3abf113680283bc7a9f16
             </div>
             <select id="mode_grade">
               <option selected>Select class</option>
@@ -190,7 +177,7 @@
             <i class="fa-regular fa-flag"></i>Students repots
           </li>
         </ul>
-        <div class="Teacher_Sittings Sittings_actionM">
+        <div class="Teacher_Sittings Sittings_actionM" style="display: none;">
           <p><i class="fa-solid fa-gear"></i> sittings</p>
         </div>
       </div>
@@ -222,7 +209,7 @@
             <i class="fa-regular fa-flag"></i>Students repots
           </li>
         </ul>
-        <div class="Sittings_action">
+        <div class="Sittings_action" style="display: none;">
           <p><i class="fa-solid fa-gear"></i> sittings</p>
         </div>
       </div>
@@ -324,9 +311,9 @@
           <div class="studentData">
             <div class="top_table">
               <span class="table_name">Name</span>
-              <span class="table_Email">Email adress</span>
-              <span class="table_Class">Class</span>
-              <span class="TABLE_Gender">Gender</span>
+              <span class="table_Email responsive">Email adress</span>
+              <span class="table_Class responsive">Class</span>
+              <span class="TABLE_Gender ">Gender</span>
               <span class="TABLE_Gender">Actions</span>
             </div>
             <div class="student_data_Parent">
@@ -360,9 +347,9 @@
             <div class="top">
               <div>
                 <label for="name">Name</label>
-                <input type="text" name="name" class="name" />
+                <input type="text" name="name" class="name stud_name" />
               </div>
-              <select class="select_class">
+              <select class="select_class  stud_select_class">
                 <option selected>Select class</option>
                 <option>Grade 1</option>
                 <option>Grade 2</option>
@@ -377,7 +364,7 @@
                 <option>Grade 11</option>
                 <option>Grade 12</option>
               </select>
-              <select class="select_Gender">
+              <select class="select_Gender stud_select_Gender">
                 <option value="Mail">Male</option>
                 <option value="Fmail">Female</option>
               </select>
@@ -386,17 +373,17 @@
             <div class="middel">
               <div class="lebels">
                 <label for="Email">Email address</label>
-                <input type="text" name="Email" class="Email" />
+                <input type="text" name="Email" class="Email  stud_email" />
               </div>
-              <div class="lebels">
+              <!-- <div class="lebels">
                 <label for="phone">Name</label>
                 <input type="text" name="phone" class="phone" />
-              </div>
+              </div> -->
             </div>
 
             <div class="lebels">
               <label for="Password">Password</label>
-              <input type="Password" name="Password" class="Password" />
+              <input type="Password" name="Password" class="Password stud_password" />
             </div>
             <button class="add_student_btn">Add Student</button>
           </form>

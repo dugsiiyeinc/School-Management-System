@@ -135,27 +135,27 @@ Student_repots.addEventListener("click",()=>{
     loadingReports()
 
 })
-Sittings_action.addEventListener("click",()=>{
+// Sittings_action.addEventListener("click",()=>{
  
-    teacherData.style.display='none'
-    My_class.style.display='none'
-    bottom_header.style.display='none'
-    Add_new_student.style.display='none'
-    sittings.style.display='block'
-    repots.style.display='none'
+//     teacherData.style.display='none'
+//     My_class.style.display='none'
+//     bottom_header.style.display='none'
+//     Add_new_student.style.display='none'
+//     sittings.style.display='block'
+//     repots.style.display='none'
 
-    Student_repots.classList.remove('left_side_active')
-    add_N_StudentC.classList.remove('left_side_active')
-    my_DataC.classList.remove('left_side_active')
-    my_ClassC.classList.remove('left_side_active')
+//     Student_repots.classList.remove('left_side_active')
+//     add_N_StudentC.classList.remove('left_side_active')
+//     my_DataC.classList.remove('left_side_active')
+//     my_ClassC.classList.remove('left_side_active')
 
-    add_N_StudentCM.classList.remove('left_side_active')
-    my_DataM.classList.remove('left_side_active')
-    my_ClassCM.classList.remove('left_side_active')
-   Student_repotsM.classList.remove('left_side_active')
+//     add_N_StudentCM.classList.remove('left_side_active')
+//     my_DataM.classList.remove('left_side_active')
+//     my_ClassCM.classList.remove('left_side_active')
+//    Student_repotsM.classList.remove('left_side_active')
 
 
-})
+// })
 edit_T.addEventListener("click",()=>{
     
     teacherData.style.display='none'
@@ -258,26 +258,26 @@ Student_repotsM.addEventListener("click",()=>{
    loadingReports()
 
 })
-Sittings_actionM.addEventListener("click",()=>{
+// Sittings_actionM.addEventListener("click",()=>{
     
-    teacherData.style.display='none'
-    My_class.style.display='none'
-    bottom_header.style.display='none'
-    Add_new_student.style.display='none'
-    repots.style.display='none'
-    sittings.style.display='block'
+//     teacherData.style.display='none'
+//     My_class.style.display='none'
+//     bottom_header.style.display='none'
+//     Add_new_student.style.display='none'
+//     repots.style.display='none'
+//     sittings.style.display='block'
 
-    add_N_StudentC.classList.remove('left_side_active')
-    Student_repotsM.classList.remove('left_side_active')
-    my_DataC.classList.remove('left_side_active')
-    my_ClassC.classList.remove('left_side_active')
+//     add_N_StudentC.classList.remove('left_side_active')
+//     Student_repotsM.classList.remove('left_side_active')
+//     my_DataC.classList.remove('left_side_active')
+//     my_ClassC.classList.remove('left_side_active')
 
-    add_N_StudentCM.classList.remove('left_side_active')
-    my_DataM.classList.remove('left_side_active')
-    my_ClassCM.classList.remove('left_side_active')
+//     add_N_StudentCM.classList.remove('left_side_active')
+//     my_DataM.classList.remove('left_side_active')
+//     my_ClassCM.classList.remove('left_side_active')
 
 
-})
+// })
 
 
 
@@ -367,8 +367,8 @@ let loadinhClass=()=>{
             student_data.innerHTML=`
                      <span class="table_name"><img src="${stud.img}" alt="" class="student_img"> <span class="name">${stud.name}</span></span>
                         
-                        <span class="table_Email">${stud.email}</span>
-                        <span class="table_Class">${stud.studentClass}</span>
+                        <span class="table_Email responsive">${stud.email}</span>
+                        <span class="table_Class responsive">${stud.studentClass}</span>
                         <span class="TABLE_Gender">${stud.gender}</span>
                         <span style="display: flex;align-items: center;gap: 10px;"><button class="edit">Edit</button><button class="delete">Delete</button></span>
             `
@@ -422,7 +422,7 @@ let loadingReports=()=>{
     if(repot.view.teacher==false){
 
       colom.style.background='#8fdaf841'
-    }else if(repot.view.teacher===true){
+    }else if(repot.view.teacher==true){
       colom.style.background='transparent'
 
     }
@@ -544,14 +544,14 @@ let model_Function = (index,type) => {
         name_r.innerHTML=col.name
 
 
+        
+  let repots=JSON.parse(localStorage.getItem('reports'))
+  let report=repots.find(report=>report.current_id == col.current_id)
+  report.view.teacher=true
+  localStorage.setItem('reports',JSON.stringify(repots))
 
     model_repots.querySelector(".fa-xx").addEventListener("click", () => {
       model.style.display = "none";
-
-  let repots=JSON.parse(localStorage.getItem('reports'))
-    let report=repots.find(report=>report.text == col.text)
-    report.view.teacher=true
-    localStorage.setItem('reports',JSON.stringify(repots))
       loadingReports()
     });
 
@@ -582,6 +582,12 @@ let model_Function = (index,type) => {
     const current_user = JSON.parse(localStorage.getItem("current_user"))
      let teacher = teachers.find((teacher) => teacher.name == current_user.name);
     let textArea=document.querySelector('#inpu_repot').value
+
+    const dateNow = Date.now(); 
+    const randomNum = Math.floor(Math.random() * 1000);
+    let current_id=dateNow-randomNum;
+
+     console.log(current_id)
   
     let data_Reports={
      type:'teacher',
@@ -591,12 +597,65 @@ let model_Function = (index,type) => {
      text:textArea,
      view:{
         admin:false
-     }
+     },
+     current_id:current_id
     }
-     console.log(data_Reports)
+  
     let reports= JSON.parse(localStorage.getItem('reports')) || []
      reports.unshift(data_Reports)
 
     localStorage.setItem('reports',JSON.stringify(reports))
-    textArea=''
+    textArea.value==''
+    alert('succesfuly sent report')
+    document.querySelector('.send_repot').reset()
+})
+
+// addstudent
+document.querySelector('.Add_student_form').addEventListener('submit',(e)=>{
+     e.preventDefault()
+    
+
+
+
+  const name = document.querySelector(".stud_name").value;
+  const studentClass = document.querySelector(".stud_select_class").value;
+  const gender = document.querySelector(".stud_select_Gender").value;
+  const email = document.querySelector(".stud_email").value;
+  const password = document.querySelector(".stud_password").value;
+  const img = JSON.parse(localStorage.getItem("img"));
+
+  if (!name || !studentClass || !gender || !email || !img) {
+    alert("Please fill out all fields.");
+    return;
+  }
+
+  let student={
+    email:email,
+    gender:gender,
+    img:img,
+    name:name,
+    password:password,
+    studentClass:studentClass
+
+  }
+
+  console.log(student)
+
+
+  let students=JSON.parse(localStorage.getItem('students')) || []
+   let exisiting_student=students.find(stud=>stud.name == name)
+   if(exisiting_student){
+    alert(`student ${name} already exist`)
+     return
+    }
+     
+    students.push(student)
+
+    localStorage.setItem('students',JSON.stringify(students))
+       alert('registration successfuly')
+    email.value=''
+    password.value=''
+    name.value=''
+    img.src=''
+
 })
