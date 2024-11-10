@@ -454,6 +454,34 @@ function searchTeachers() {
     ? "none"
     : "block";
 }
+document.getElementById('studentSearchInput').addEventListener('input', searchStudents);
+
+function searchStudents() {
+  console.log('searchStudents triggered'); // Debug log
+  const input = document.getElementById('studentSearchInput').value.toLowerCase();
+  const tableBody = document.getElementById('studentList');
+  const rows = tableBody.getElementsByClassName('div2'); // Get divs, not rows
+  let hasStudents = false;
+
+  for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      const name = row.querySelector('.space').textContent.toLowerCase(); // Get name from space div
+      const studentClass = row.querySelector('.studentClass').textContent.toLowerCase(); // Get class from studentClass div
+
+      if (name.includes(input) || studentClass.includes(input)) {
+          row.style.display = ''; // Show row if match
+          hasStudents = true;
+      } else {
+          row.style.display = 'none'; // Hide row if no match
+      }
+  }
+
+  // Show or hide the no-students message based on the result
+  document.querySelector('.no-students').style.display = hasStudents ? 'none' : 'block';
+}
+
+
+
 
 window.onload = function () {
   const activeSection = localStorage.getItem("activeSection") || "dashboard";
