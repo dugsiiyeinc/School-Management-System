@@ -259,7 +259,7 @@ function loadTeachers() {
     newRow.innerHTML = `
             <div class='space' style="display: flex;align-items: center;gap: 5px;"><img src="${teacher.img}" class="imgg" style="width: 60px; height: 60px; border-radius: 50%;">${teacher.fullname}</div>
             <div class='responsive'>${teacher.subject}</div>
-            <div>${teacher.className}</div>
+            <div>${teacher.className}</div>                                                                                                                                                                                                                                                                                                                                                                                                                   
             <div class='responsive'>${teacher.email}</div>
             <div class='responsive'>${teacher.gender}</div>
             <div style='display: flex;align-items: center;gap: 10px;'><button class="delete-btn" data-index="${index}">Delete</button><button class="edit" data-index="${index}">Edit</button></div>
