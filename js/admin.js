@@ -99,9 +99,6 @@ document.getElementById("main-add").addEventListener("click", () => {
   document.querySelector("#studentTable").style.display = "none";
 });
 
-document
-  .getElementById("searchInput")
-  // .addEventListener("input", searchTeachers);
 
 document.querySelectorAll(".logout").forEach(btn=>btn.addEventListener("click", function () {
   // console.log('logged out');
@@ -393,22 +390,27 @@ function loadStudents() {
     const newRow = document.createElement("div");
     newRow.classList.add("div2");
     newRow.innerHTML = `
-            <div class='space'style="display: flex;align-items: center;gap: 5px;"><img src="${student.img}" class="imgg" style="width: 60px; height: 60px; border-radius: 50%;">${student.name}</div>
-            <div class='responsive'>${student.email}</div>
-            <div>${student.studentClass}</div>
-            <div class='responsive'>${student.gender}</div>
-            <div style='display: flex;align-items: center;gap: 10px;'><button class="delete-btn" data-index="${index}">Delete</button><button class="edit" data-index="${index}">Edit</button></div>
-        `;
+      <div class='space' style="display: flex; align-items: center; gap: 5px;">
+        <img src="${student.img}" class="imgg" style="width: 60px; height: 60px; border-radius: 50%;">${student.name}
+      </div>
+      <div class='responsive'>${student.email}</div>
+      <div class='studentClass'>${student.studentClass}</div>  <!-- Correctly referencing studentClass -->
+      <div class='responsive'>${student.gender}</div>
+      <div style='display: flex; align-items: center; gap: 10px;'>
+        <button class="delete-btn" data-index="${index}">Delete</button>
+        <button class="edit" data-index="${index}">Edit</button>
+      </div>
+    `;
     tableBody.appendChild(newRow);
     attachingFunction2(newRow, index);
-
   });
-
 
   document.querySelectorAll(".delete-btn").forEach((btn) => {
     btn.addEventListener("click", deleteStudent);
   });
 }
+
+
 
 let attachingFunction2 = (div, index) => {
   div.querySelector(".edit").addEventListener("click", () => {
@@ -430,55 +432,121 @@ function deleteStudent(event) {
   localStorage.setItem("students", JSON.stringify(students));
   loadStudents();
 }
+document.getElementById("searchInput").addEventListener("input", searchTeachers);
 
 function searchTeachers() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
+  const input = document.getElementById('teacherSearchInput').value.trim().toLowerCase();  // Get search input value
+  const teachers = JSON.parse(localStorage.getItem("teachers")) || [];  // Get all teachers from localStorage
   const tableBody = document.getElementById("teacherList");
-  const rows = tableBody.getElementsByTagName("tr");
-  let hasTeachers = false;
+  tableBody.innerHTML = "";  // Clear the table before showing filtered results
 
-  for (let i = 0; i < rows.length; i++) {
-    const row = rows[i];
-    const fullname = row.cells[0].textContent.toLowerCase();
-    const subject = row.cells[1].textContent.toLowerCase();
-
-    if (fullname.includes(input) || subject.includes(input)) {
-      row.style.display = "";
-      hasTeachers = true;
-    } else {
-      row.style.display = "none";
-    }
+  // If search input is empty, load all teachers
+  if (input === "") {
+    loadTeachers();  // Re-load the full teacher list if no search term
+    return;
   }
 
-  document.querySelector(".no-teachers").style.display = hasTeachers
-    ? "none"
-    : "block";
+  // Log the input value to debug
+  console.log('Search input:', input);
+
+  // Filter teachers based on name, subject, or class
+  const filteredTeachers = teachers.filter(teacher => {
+    const name = teacher.fullname.toLowerCase();
+    const subject = teacher.subject.toLowerCase();
+    const className = teacher.className.toLowerCase();
+    return name.includes(input) || subject.includes(input) || className.includes(input);  // Match any of these fields
+  });
+
+  // Log the filtered teachers to debug
+  console.log('Filtered teachers:', filteredTeachers);
+
+  // If no teachers match, show the "No teachers found" message
+  if (filteredTeachers.length === 0) {
+    document.querySelector(".no-teachers").style.display = "block";  // Show "No teachers found" message
+  } else {
+    document.querySelector(".no-teachers").style.display = "none";  // Hide "No teachers found"
+  }
+
+  // Render the filtered teachers
+  filteredTeachers.forEach((teacher, index) => {
+    const newRow = document.createElement("div");
+    newRow.classList.add("div");
+    newRow.innerHTML = `
+      <div class='space' style="display: flex; align-items: center; gap: 5px;">
+        <img src="${teacher.img}" class="imgg" style="width: 60px; height: 60px; border-radius: 50%;"> ${teacher.fullname}
+      </div>
+      <div class='responsive'>${teacher.subject}</div>
+      <div>${teacher.className}</div>
+      <div class='responsive'>${teacher.email}</div>
+      <div class='responsive'>${teacher.gender}</div>
+      <div style='display: flex; align-items: center; gap: 10px;'>
+        <button class="delete-btn" data-index="${index}">Delete</button>
+        <button class="edit" data-index="${index}">Edit</button>
+      </div>
+    `;
+    tableBody.appendChild(newRow);
+
+    // Add event listeners for delete and edit buttons
+    newRow.querySelector(".delete-btn").addEventListener("click", deleteTeacher);
+    newRow.querySelector(".edit").addEventListener("click", () => editTeacher(index));
+  });
 }
+
+
 document.getElementById('studentSearchInput').addEventListener('input', searchStudents);
 
+
 function searchStudents() {
-  console.log('searchStudents triggered'); // Debug log
-  const input = document.getElementById('studentSearchInput').value.toLowerCase();
-  const tableBody = document.getElementById('studentList');
-  const rows = tableBody.getElementsByClassName('div2'); // Get divs, not rows
-  let hasStudents = false;
+  const input = document.getElementById('studentSearchInput').value.trim().toLowerCase();  // Get search input
+  const students = JSON.parse(localStorage.getItem("students")) || [];
+  const tableBody = document.querySelector(".studentList");
+  tableBody.innerHTML = "";  // Clear the student table
 
-  for (let i = 0; i < rows.length; i++) {
-      const row = rows[i];
-      const name = row.querySelector('.space').textContent.toLowerCase(); // Get name from space div
-      const studentClass = row.querySelector('.studentClass').textContent.toLowerCase(); // Get class from studentClass div
-
-      if (name.includes(input) || studentClass.includes(input)) {
-          row.style.display = ''; // Show row if match
-          hasStudents = true;
-      } else {
-          row.style.display = 'none'; // Hide row if no match
-      }
+  if (input === "") {
+    loadStudents();  // If the search field is empty, show all students
+    return;
   }
 
-  // Show or hide the no-students message based on the result
-  document.querySelector('.no-students').style.display = hasStudents ? 'none' : 'block';
+  // Filter students based on input
+  const filteredStudents = students.filter(student => {
+    const name = student.name.toLowerCase();
+    const studentClass = student.studentClass.toLowerCase();
+    return name.includes(input) || studentClass.includes(input);  // Match name or class
+  });
+
+  if (filteredStudents.length === 0) {
+    document.querySelector(".no-students").style.display = "block";  // Show "No students found" message
+  } else {
+    document.querySelector(".no-students").style.display = "none";  // Hide "No students found"
+  }
+
+  // Render filtered students
+  filteredStudents.forEach((student, index) => {
+    const newRow = document.createElement("div");
+    newRow.classList.add("div2");
+    newRow.innerHTML = `
+      <div class="space" style="display: flex; align-items: center; gap: 5px;">
+        <img src="${student.img}" class="imgg" style="width: 60px; height: 60px; border-radius: 50%;"> ${student.name}
+      </div>
+      <div class="responsive">${student.email}</div>
+      <div class="studentClass">${student.studentClass}</div>
+      <div class="responsive">${student.gender}</div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button class="delete-btn" data-index="${index}">Delete</button>
+        <button class="edit" data-index="${index}">Edit</button>
+      </div>
+    `;
+    tableBody.appendChild(newRow);
+    newRow.querySelector(".delete-btn").addEventListener("click", deleteStudent);
+    newRow.querySelector(".edit").addEventListener("click", () => editStudent(index));
+  });
 }
+
+
+
+
+
+
 
 
 
