@@ -13,6 +13,23 @@
 
 <body>
     <div class="container">
+        <div class="edit_data">
+            <div class="edi_model">
+                <i class="fa-solid fa-x fx_edit_close" style="position: absolute; right:0px ; top: 0; font-size: 1.5rem;padding: 10px; cursor: pointer;"></i>
+                <h1>you can edit your profile</h1>
+                <div class="content" style="align-items: self-start; display: flex; width: 100%; flex-direction: column; gap: 20px;">
+                    <div class="designation-input" style="align-items: self-start; display: flex;">
+                        <img src=" "class="Techer_img img_view" width="100px" height="100px" style="border-radius: 50%; padding: 3px;">
+                        <input type="file" id="designation" placeholder="img">
+                    </div>
+                    <input type="text" class="edit_data_input">
+                    <input type="text" class="edit_data_school">
+                    <span style="display: flex; align-items:center; width: 100%; gap: 5px;"><input type="password" class="edit_data_password"> <i class="fa-solid fa-eye-slash fa_eye_slash"></i></span>
+                    <button class="edit_data_button">Save</button>
+                </div>
+            </div>
+        </div>
+
         <div class="old_edit_model">
             <div class="edit_model" >
                 <i class="fa-solid fa-x fa-xx" style="position: absolute; right: 0px; top: 0px; font-size: 1.3rem; font-weight: 900; cursor: pointer;"></i>
@@ -120,7 +137,7 @@
         <!-- sidebar -->
         <div class="sidebar">
             <div class="logo-section">
-                <img src="IMG_0218.JPG" alt="logo" class="admin_img">
+                <img src="IMG_0218.JPG" alt="logo" class="admin_img edit_your_dat">
                 <h2 class="admin_Name">School Admin Dashboard</h2>
             </div>
             <div class="sidebar-menu">
@@ -429,10 +446,10 @@
                             <input type="email" id="studentEmail" placeholder="Enter email" required>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="studentPhone">Phone number:</label>
                             <input type="tel" id="studentPhone" placeholder="Enter phone number" required>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="form-group password">
                         <label for="studentPassword">Password:</label>
@@ -448,7 +465,7 @@
             <!-- Table for displaying students -->
             <div class="student-table" id="studentTable" style="  display: flex; flex-direction: column; display: none;">
                
-                    <div class="trr2" >
+                    <div class="trr2">
                         <div class="space">Name</div>
                         <div class='responsive'>Email address</div>
                         <div>Class</div>

@@ -1,11 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded",documentLaoding)
+
+  function documentLaoding(){
   document.querySelector('.reports').style.display='none'
   let admin_Data = JSON.parse(localStorage.getItem("admin"));
   let admin_img = document.querySelector(".admin_img");
   let admin_Name = document.querySelector(".admin_Name");
   admin_img.src = admin_Data.admin_img;
   admin_Name.innerHTML = `Admin ${admin_Data.adminName}`;
-});
+};
 const menuToggle = document.querySelector(".menu-toggle");
 const navUl = document.querySelector(".sidebar");
 const barBtn = document.getElementById("bar-btn");
@@ -323,7 +325,11 @@ let model_Function = (index, type) => {
                 teachers[index].email=model_email.value
                 teachers[index].gender=model_gender.value
                 teachers[index].className=mode_grade.value
+                if(!img){
+                  teachers[index].img=teachers[index].img
+                }else{
                 teachers[index].img=img
+                }
                 if(model_Access.checked==true){
                   teachers[index].add_student='yes'
                 }else{
@@ -356,8 +362,11 @@ let model_Function = (index, type) => {
                 students[index].email=model_email.value
                 students[index].gender=model_gender.value
                 students[index].studentClass=mode_grade.value
+                if(!img){
+                  students[index].img= students[index].img
+                }else{
                 students[index].img=img
-                
+                }
                 localStorage.setItem('students',JSON.stringify(students))
                 loadStudents()
                 model.style.display = "none";
@@ -435,14 +444,14 @@ function deleteStudent(event) {
 document.getElementById("searchInput").addEventListener("input", searchTeachers);
 
 function searchTeachers() {
-  const input = document.getElementById('teacherSearchInput').value.trim().toLowerCase();  // Get search input value
-  const teachers = JSON.parse(localStorage.getItem("teachers")) || [];  // Get all teachers from localStorage
+  const input = document.getElementById('searchInput').value.trim().toLowerCase(); 
+  const teachers = JSON.parse(localStorage.getItem("teachers")) || []; 
   const tableBody = document.getElementById("teacherList");
-  tableBody.innerHTML = "";  // Clear the table before showing filtered results
+  tableBody.innerHTML = "";  
 
-  // If search input is empty, load all teachers
+ 
   if (input === "") {
-    loadTeachers();  // Re-load the full teacher list if no search term
+    loadTeachers(); 
     return;
   }
 
@@ -462,9 +471,9 @@ function searchTeachers() {
 
   // If no teachers match, show the "No teachers found" message
   if (filteredTeachers.length === 0) {
-    document.querySelector(".no-teachers").style.display = "block";  // Show "No teachers found" message
+    document.querySelector(".no-teachers").style.display = "block"
   } else {
-    document.querySelector(".no-teachers").style.display = "none";  // Hide "No teachers found"
+    document.querySelector(".no-teachers").style.display = "none";  
   }
 
   // Render the filtered teachers
@@ -641,3 +650,56 @@ let reports_model=(col,index)=>{
    });
 
  }
+
+
+
+//  edit you data
+ document.querySelector('.edit_your_dat').addEventListener('click',()=>{
+   document.querySelector('.edit_data').style.display='flex'
+
+  let admin_Data = JSON.parse(localStorage.getItem("admin"));
+  console.log(admin_Data)
+  let input=document.querySelector('.edit_data_input')
+  let password=document.querySelector('.edit_data_password')
+  let school=document.querySelector('.edit_data_school')
+  let img=document.querySelector('.img_view')
+ 
+  input.value=admin_Data.adminName
+  password.value=admin_Data.password
+  school.value=admin_Data.schoolName
+  img.src=admin_Data.admin_img
+  
+
+
+
+   // passwor viewing
+   let passwor_viewing=document.querySelector('.fa-eye-slash')
+   passwor_viewing.addEventListener('click',()=>{
+    passwor_viewing.classList.add('fa-eye')
+    passwor_viewing.classList.remove('fa-eye-slash')
+    password.type='text'
+  
+    })
+  //  closing model
+   document.querySelector('.fx_edit_close').addEventListener('click',()=>{
+   document.querySelector('.edit_data').style.display='none'
+   passwor_viewing.classList.remove('fa-eye')
+   passwor_viewing.classList.add('fa-eye-slash')
+   password.type='password'
+    localStorage.removeItem('img')
+   })
+
+
+  //  saving changes
+  document.querySelector('.edit_data_button').addEventListener('click',()=>{
+    let img=JSON.parse(localStorage.getItem('img'))
+    admin_Data.adminName=input.value
+    admin_Data.password=password.value
+    admin_Data.schoolName=school.value
+    admin_Data.admin_img=img
+    console.log(admin_Data)
+    localStorage.setItem('admin',JSON.stringify(admin_Data))
+   document.querySelector('.edit_data').style.display='none'
+    documentLaoding()
+  })
+ })

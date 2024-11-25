@@ -588,6 +588,56 @@ header {
 .space{
     grid-column: 1/span 2;
 }
+
+
+/* edit dat */
+.edit_data{
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+    z-index: 50;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.edi_model{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px 20px;
+    background: #fcfafa;
+    border-radius:10px ;
+    width: min(95%,700px);
+}
+.edi_model h1{
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.edit_data_input,.edit_data_password,.edit_data_school{
+    padding: 13px;
+    outline: none;
+    width: min(100%,400px);
+    border: none;
+    border: 1px rgba(128, 128, 128, 0.431) solid;
+    font-size: 1.2rem;
+    background: transparent;
+    border-radius: 10px;
+}
+.edit_data_button{
+    width: min(100%,400px);
+    border-radius: 5px;
+    padding: 13px;
+    border: none;
+    background-color: #007bffc4;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
   
 #close-btn {
     display: none;

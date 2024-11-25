@@ -115,6 +115,26 @@ add_N_StudentC.addEventListener("click",()=>{
     Student_repotsM.classList.remove('left_side_active')
 
 })
+document.querySelector('.add_student_top').addEventListener("click",()=>{
+    teacherData.style.display='none'
+    My_class.style.display='none'
+    bottom_header.style.display='none'
+    sittings.style.display='none'
+    Add_new_student.style.display='block'
+    repots.style.display='none'
+
+
+    add_N_StudentC.classList.add('left_side_active')
+    my_DataC.classList.remove('left_side_active')
+    my_ClassC.classList.remove('left_side_active')
+    Student_repots.classList.remove('left_side_active')
+
+    add_N_StudentCM.classList.add('left_side_active')
+    my_DataM.classList.remove('left_side_active')
+    my_ClassCM.classList.remove('left_side_active')
+    Student_repotsM.classList.remove('left_side_active')
+
+})
 Student_repots.addEventListener("click",()=>{
     teacherData.style.display='none'
     My_class.style.display='none'
@@ -158,21 +178,7 @@ Student_repots.addEventListener("click",()=>{
 // })
 edit_T.addEventListener("click",()=>{
     
-    teacherData.style.display='none'
-    My_class.style.display='none'
-    bottom_header.style.display='none'
-    Add_new_student.style.display='none'
-    sittings.style.display='block'
-    repots.style.display='none'
-   
-
-    add_N_StudentC.classList.remove('left_side_active')
-    my_DataC.classList.remove('left_side_active')
-    my_ClassC.classList.remove('left_side_active')
-
-    add_N_StudentCM.classList.remove('left_side_active')
-    my_DataM.classList.remove('left_side_active')
-    my_ClassCM.classList.remove('left_side_active')
+   alert('fuck you')
 
 
 })
@@ -386,7 +392,7 @@ let loadinhClass=()=>{
             delette.style.display='block'
              edit.innerHTML='edit'
            }
-            attachAddevent(student_data,index)
+            attachAddevent(student_data,stud.name)
         });
        }
 };
@@ -400,7 +406,7 @@ let loadingReports=()=>{
   // console.log(student_reports)
 
   let wanted_reports=student_reports.filter(report=>report.class ==teacher.className)
-  console.log(wanted_reports)
+  // console.log(wanted_reports)
 
   let repost_container=document.querySelector('.repost_container')
   repost_container.innerHTML=''
@@ -432,28 +438,93 @@ let loadingReports=()=>{
  
 }
 
-function attachAddevent(div,index){
+// serching
+document.querySelector('.studentSearching').addEventListener('input', searchStudents);
+
+
+function searchStudents() {
+  const input = document.querySelector('.studentSearching').value.trim().toLowerCase();  // Get search input
+  const students = JSON.parse(localStorage.getItem("students")) || [];
+  const tableBody = document.querySelector(".student_data_Parent");
+  tableBody.innerHTML = "";  // Clear the student table
+
+  if (input === "") {
+    loadinhClass();  // If the search field is empty, show all students
+    return;
+  }
+
+  // Filter students based on input
+  const filteredStudents = students.filter(student => {
+    const name = student.name.toLowerCase();
+    const studentClass = student.studentClass.toLowerCase();
+    return name.includes(input) || studentClass.includes(input);  // Match name or class
+  });
+
+  if (filteredStudents.length === 0) {
+    // document.querySelector(".no-students").style.display = "block";  // Show "No students found" message
+  } else {
+    // document.querySelector(".no-students").style.display = "none";  // Hide "No students found"
+  }
+
+  // Render filtered students
+  filteredStudents.forEach((student, index) => {
+    const newRow = document.createElement("div");
+    newRow.classList.add("student_data");
+    newRow.innerHTML = `
+      <div class="space" style="display: flex; align-items: center; gap: 5px;">
+        <img src="${student.img}" class="imgg" style="width: 60px; height: 60px; border-radius: 50%;"> ${student.name}
+      </div>
+      <div class="responsive">${student.email}</div>
+      <div class="studentClass">${student.studentClass}</div>
+      <div class="responsive">${student.gender}</div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button class="edit" data-index="${index}">Edit</button>
+        <button class="delete" data-index="${index}">Delete</button>
+      </div>
+    `;
+   
+    // let student_data=document.createElement('div')
+    // student_data.classList.add('student_data')
+    // student_data.innerHTML=`
+    //          <span class="table_name"><img src="${stud.img}" alt="" class="student_img"> <span class="name">${stud.name}</span></span>
+                
+    //             <span class="table_Email responsive">${stud.email}</span>
+    //             <span class="table_Class responsive">${stud.studentClass}</span>
+    //             <span class="TABLE_Gender">${stud.gender}</span>
+    //             <span style="display: flex;align-items: center;gap: 10px;"><button class="edit">Edit</button><button class="delete">Delete</button></span>
+    // `
+
+    tableBody.appendChild(newRow);
+    newRow.addEventListener('click', attachAddevent(newRow,index))
+
+  });
+}
+
+
+function attachAddevent(div,name){
   let deleteBtn= div.querySelector('.delete')
   let edit= div.querySelector('.edit')
   deleteBtn.addEventListener('click',()=>{
     const students=JSON.parse(localStorage.getItem('students'))
-    students.splice(index,1)
-    localStorage.setItem('students',JSON.stringify(students))
+    let newStudents=students.filter(stud=> stud.name !== name )
+    // students.splice(index,1)
+    localStorage.setItem('students',JSON.stringify(newStudents))
     div.remove()
   });
   edit.addEventListener('click',()=>{
 
     if(edit.innerHTML=='edit'){
         // console.log(index)
-        model_Function(index, 'edit')
+        model_Function(name, 'edit')
     }else{
-        model_Function(index, 'view')
+        model_Function(name, 'view')
 
     }
   })
 }
 
-let model_Function = (index,type) => {
+let model_Function = (name,type) => {
+  console.log(name)
     let model = document.querySelector(".old_edit_model");
     let model_name = document.querySelector("#model_name");
     let model_email = document.querySelector("#model_email");
@@ -473,51 +544,52 @@ let model_Function = (index,type) => {
        let teacher=teachers.find(teach=>teach.fullname == currentTeacherUser.fullname)
     //    console.log(currentTeacherUser)
     //    return
-       let filtredSudents=students.filter(stud=>stud.studentClass == teacher.className)
+       let filtredSudent=students.find(stud=>stud.name === name)
        if(type=='edit'){
-        let filtredSudent = filtredSudents[index];
+        // let filtredSudent = filtredSudents[index];
         model_name.value = filtredSudent.name;
         model_email.value = filtredSudent.email;
         model_password.value = filtredSudent.password;
         model_img.src = filtredSudent.img;
-        mode_grade.value = filtredSudents[index].studentClass;
+        mode_grade.value = filtredSudent.studentClass;
         model_gender.value=filtredSudent.gender
-        
-          
-       document.querySelector('.save').addEventListener('click',(e)=>{
-             //  console.log(students)
-             e.preventDefault()
-             let img=JSON.parse(localStorage.getItem('img'))
-             filtredSudents[index].name=model_name.value
-             filtredSudents[index].password=model_password.value
-             filtredSudents[index].email=model_email.value
-             filtredSudents[index].gender=model_gender.value
-             filtredSudents[index].studentClass=mode_grade.value
-             if(!img){
-               filtredSudents[index].img= model_img
-             }else{
-               filtredSudents[index].img=img
-             }
-          
-             
-             localStorage.setItem('students',JSON.stringify(students))
-             loadinhClass()
-             let model=document.querySelector('.old_reports_model')
-             model.style.display = "none";
-
-           })
+         return
           
        }else{
-        let filtredSudent = filtredSudents[index];
+        // let filtredSudent = filtredSudents[index];
         model_name.value = filtredSudent.name;
         model_email.value = filtredSudent.email;
         model_password.value = filtredSudent.password;
         model_img.src = filtredSudent.img;
-        mode_grade.value = filtredSudents[index].studentClass;
+        mode_grade.value = filtredSudent.studentClass;
         model_gender.value=filtredSudent.gender
         document.querySelector('.save').style.display='none'
        }
-           
+          
+                
+       document.querySelector('.save').addEventListener('click',(e)=>{
+        e.preventDefault()
+        let img=JSON.parse(localStorage.getItem('img'))
+        filtredSudent.name=model_name.value
+        filtredSudent.password=model_password.value
+        filtredSudent.email=model_email.value
+        filtredSudent.gender=model_gender.value
+        filtredSudent.studentClass=mode_grade.value
+        if(!img){
+          filtredSudent.img= filtredSudent.img
+        }else{
+          filtredSudent.img=img
+        }
+     
+        localStorage.removeItem('img')
+        localStorage.setItem('students',JSON.stringify(students))
+        loadinhClass()
+        // let model=document.querySelector('.old_reports_model')
+        model.style.display = "none";
+      
+
+
+      })
 
   
     model_promt.querySelector(".fa-xx").addEventListener("click", () => {
@@ -580,14 +652,14 @@ let model_Function = (index,type) => {
     e.preventDefault()
     const teachers = JSON.parse(localStorage.getItem("teachers"));
     const current_user = JSON.parse(localStorage.getItem("current_user"))
-     let teacher = teachers.find((teacher) => teacher.name == current_user.name);
+     let teacher = teachers.find((teacher) => teacher.fullname == current_user.fullname);
     let textArea=document.querySelector('#inpu_repot').value
-
+      // console.log(teacher)
     const dateNow = Date.now(); 
     const randomNum = Math.floor(Math.random() * 1000);
     let current_id=dateNow-randomNum;
 
-     console.log(current_id)
+    //  console.log(current_id)
   
     let data_Reports={
      type:'teacher',
@@ -603,7 +675,8 @@ let model_Function = (index,type) => {
   
     let reports= JSON.parse(localStorage.getItem('reports')) || []
      reports.unshift(data_Reports)
-
+    //  console.log(data_Reports)
+    //  return
     localStorage.setItem('reports',JSON.stringify(reports))
     textArea.value==''
     alert('succesfuly sent report')

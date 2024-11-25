@@ -14,6 +14,9 @@ ADMIN.addEventListener('click', () => {
     STUDENT.style.border = 'none';
     TEACHER.style.border = 'none';
     ADMIN.style.border = 'solid #000 2px';
+    document.querySelector('.reg_link').style.display='block'
+   let inputt= document.querySelector('#username')
+   inputt.placeholder='Enter your name'
 });
 
 TEACHER.addEventListener('click', () => {
@@ -23,6 +26,10 @@ TEACHER.addEventListener('click', () => {
     STUDENT.style.border = 'none';
     ADMIN.style.border = 'none';
     TEACHER.style.border = 'solid #000 2px';
+    document.querySelector('.reg_link').style.display='none'
+      let inputt= document.querySelector('#username')
+   inputt.placeholder='Enter your Email'
+
 });
 
 STUDENT.addEventListener('click', () => {
@@ -32,6 +39,10 @@ STUDENT.addEventListener('click', () => {
     ADMIN.style.border = 'none';
     TEACHER.style.border = 'none';
     STUDENT.style.border = 'solid #000 2px';
+    document.querySelector('.reg_link').style.display='none'
+      let inputt= document.querySelector('#username')
+   inputt.placeholder='Enter your Email'
+
 });
 
 FORM.addEventListener('submit', (e) => {
@@ -41,6 +52,9 @@ FORM.addEventListener('submit', (e) => {
 
     if (admin) {
         let adminData = JSON.parse(localStorage.getItem('admin'))
+        if(!adminData){
+            alert('there is no admin account please sinup for admin')
+        }
         if (adminData.adminName===email && adminData.password===password) {
             alert('Login Successful');
             localStorage.setItem('current_user', JSON.stringify({ type: 'admin', email })); 
@@ -83,3 +97,4 @@ FORM.addEventListener('submit', (e) => {
 
     
 });
+

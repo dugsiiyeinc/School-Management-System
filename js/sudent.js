@@ -148,6 +148,7 @@ document.querySelector('.student_send-repot').addEventListener('submit',(e)=>{
      reports.unshift(data_Reports)
 
     localStorage.setItem('reports',JSON.stringify(reports))
+ 
     document.querySelector('.student_send-repot').reset()
     alert('report sent successfuly')
 })
