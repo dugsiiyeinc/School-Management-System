@@ -580,7 +580,7 @@ document.querySelector('.report_section').addEventListener('click',()=>{
 })
 
 
-
+// repots
 let loadingReports=()=>{
   let repots=JSON.parse(localStorage.getItem('reports'))
 
@@ -615,6 +615,12 @@ let loadingReports=()=>{
   })
  
 }
+
+// clering reports
+document.querySelector('#clear_repots').addEventListener('click',()=>{
+  localStorage.removeItem('reports')
+  loadingReports()
+})
 
 let reports_model=(col,index)=>{
   console.log(col)
