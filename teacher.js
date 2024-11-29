@@ -178,7 +178,7 @@ Student_repots.addEventListener("click",()=>{
 // })
 edit_T.addEventListener("click",()=>{
     
-   alert('fuck you')
+   alert('you dont have access to edit your profile')
 
 
 })
