@@ -553,7 +553,7 @@ let model_Function = (name,type) => {
         model_img.src = filtredSudent.img;
         mode_grade.value = filtredSudent.studentClass;
         model_gender.value=filtredSudent.gender
-         return
+     
           
        }else{
         // let filtredSudent = filtredSudents[index];
