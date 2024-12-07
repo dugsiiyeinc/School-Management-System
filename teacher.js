@@ -204,7 +204,7 @@ my_DataM.addEventListener("click",()=>{
  
 })
 my_ClassCM.addEventListener("click",()=>{
-    teacherData.style.display='none'
+    teacherData.style.display='none'  
     Add_new_student.style.display='none'
     bottom_header.style.display='block'
     sittings.style.display='none'
@@ -524,7 +524,8 @@ function attachAddevent(div,name){
 }
 
 let model_Function = (name,type) => {
-  console.log(name)
+
+  // console.log(name)
     let model = document.querySelector(".old_edit_model");
     let model_name = document.querySelector("#model_name");
     let model_email = document.querySelector("#model_email");
@@ -545,6 +546,7 @@ let model_Function = (name,type) => {
     //    console.log(currentTeacherUser)
     //    return
        let filtredSudent=students.find(stud=>stud.name === name)
+       console.log(filtredSudent)
        if(type=='edit'){
         // let filtredSudent = filtredSudents[index];
         model_name.value = filtredSudent.name;
@@ -553,7 +555,7 @@ let model_Function = (name,type) => {
         model_img.src = filtredSudent.img;
         mode_grade.value = filtredSudent.studentClass;
         model_gender.value=filtredSudent.gender
-         return
+        //  return
           
        }else{
         // let filtredSudent = filtredSudents[index];
@@ -568,6 +570,8 @@ let model_Function = (name,type) => {
           
                 
        document.querySelector('.save').addEventListener('click',(e)=>{
+   
+  
         e.preventDefault()
         let img=JSON.parse(localStorage.getItem('img'))
         filtredSudent.name=model_name.value
@@ -593,6 +597,7 @@ let model_Function = (name,type) => {
 
   
     model_promt.querySelector(".fa-xx").addEventListener("click", () => {
+      // alert("hello")
       model.style.display = "none";
       localStorage.removeItem('img')
     });
