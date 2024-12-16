@@ -36,7 +36,7 @@ Here are some features we plan to implement in future versions:
 
 
 # 📜 License
-This project is licensed under the MIT License. Feel free to use and modify it as needed.
+This project is licensed under the Dugsiiye License. Feel free to use and modify it as needed.
 
 # 📧 Contact
 For questions or suggestions, feel free to reach out:
